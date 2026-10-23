@@ -1,0 +1,712 @@
+.page-index {
+    background-color: #fffbf0;
+    margin: 0;
+    padding: 0;
+}
+
+/* 顶部导航栏 - 核心修改：固定顶部+整体内容完全居中+暖黄主题+字体放大优化 */
+.page-index {
+    background-color: #fffaf0;
+}
+
+.page-index .nav {
+    background-color: #ffd166;
+}
+
+.page-index .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+/* 标题样式优化 */
+.page-index .page-title {
+    color: #ffc857;
+    font-size: 32px;
+}
+
+.page-index .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+}
+
+/* 快捷按钮 放大+悬浮优化 */
+.page-index .theme-btn {
+    background-color: #ffc857;
+    padding: 18px 35px;
+    font-size: 18px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(255, 200, 87, 0.2);
+    margin: 0 15px;
+}
+
+.page-index .theme-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba rgba(255, 200, 87, 0.3);
+}
+
+/* 全屏轮播banner容器 - 完美避开导航栏+核心修改：降低banner图不透明度 */
+#banner-container {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    margin: 0;
+    z-index: 1;
+    overflow: hidden;
+    opacity: 0.82; /* ✅ banner图整体不透明度，取值0-1，越小越透明，0.82视觉最佳 */
+}
+
+#banner-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 800%;
+}
+
+#banner-wrapper img {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* 文字容器 - 平滑过渡动画 + 初始居中，滚动时JS控制上移 */
+.banner-text-box {
+    position: fixed;
+	background-color: rgba(255, 180, 60, 0.5);
+	border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    transition: all 0.2s ease-out; /* 滚动上移的动画平滑丝滑 */
+    pointer-events: none; /* 不影响鼠标滚动 */
+}
+
+/* 首页主题标语样式 */
+.banner-title {
+    font-size: 48px;
+    color: #552200;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    padding: 15px 30px;
+    display: inline-block;
+}
+
+/* 首页简介文字样式 */
+.banner-desc {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.8;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+/* 首页主体内容容器 - 下移避免被banner遮挡 */
+.page-index .container {
+    position: relative;
+    z-index: 3;
+    margin-top: 100vh;
+    padding: 30px 0;
+}
+
+.page-index .index-text {
+    background: rgba(255, 253, 245, 0.92);
+    padding: 28px 32px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 209, 102, 0.4);
+    box-shadow: 0 4px 16px rgba(180, 130, 40, 0.12);
+}
+.page-index .index-text p {
+    text-indent: 2em;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    color: #5a3e1b;
+}
+
+.page-index .index-text p:first-child {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.page-index .index-text p:last-child {
+    font-size: 17px;
+    color: #8a6a3a;
+    margin-bottom: 0;
+    text-indent: 2em;
+}
+/* 页面2：汉字的由来 - 古铜色主题（历史感）+ 题目图片统一 */
+.page-origin {
+    background-color: #fffaf0;
+}
+
+.page-origin .nav {
+    background-color: #ffd166;
+}
+
+.page-origin .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+.page-origin .page-title {
+    color: #ffc857;
+    font-size: 40px; /* 大标题放大（原28px） */
+}
+
+.page-origin .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+    font-size: 30px;
+}
+
+.page-origin .theme-btn {
+    background-color: #ffc857;
+}
+
+/* 新增：页面2题目图片统一大小样式 */
+.page-origin #quiz-img {
+    width: 180px !important;
+    height: 180px !important;
+    object-fit: contain;
+    margin: 15px auto !important;
+    display: block !important;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(255, 200, 87, 0.1);
+}
+/* 页面3：汉字成长史 - 青蓝色主题（时间轴） */
+.page-history {
+    background-color: #fffaf0;
+}
+
+.page-history .nav {
+    background-color: #ffd166;
+}
+
+.page-history .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+.page-history .page-title {
+    color: #ffc857;
+    font-size: 40px; /* 大标题放大（原28px） */
+}
+
+.page-history .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+    font-size: 30px;
+}
+
+.page-history .theme-btn {
+    background-color: #ffc857;
+}
+
+/* 时间轴专属样式 */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #ffc857;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 4px solid #ffc857;
+    border-radius: 50%;
+    top: 15px;
+    z-index: 1;
+}
+
+.left { left: 0; }
+
+.right { left: 50%; }
+
+.left::after { right: -13px; }
+
+.right::after { left: -13px; }
+
+/* ============ 核心样式：缩小卡片+左右分栏布局 ============ */
+.timeline-content {
+    padding: 12px 15px; /* 缩小内边距 整体卡片变小 */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(255, 200, 87, 0.1);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    max-width: 500px; /* 固定卡片最大宽度 彻底缩小 */
+    margin: 0 auto;
+}
+
+/* 左侧：标题+文字介绍 固定区域 */
+.timeline-text {
+    flex: 1;
+}
+
+.timeline-text h3 {
+    color: #ffc857;
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.timeline-text p {
+    font-size: 14px; /* 缩小文字大小 适配小卡片 */
+    line-height: 1.6;
+    margin: 0;
+    color: #333;
+}
+
+/* 右侧：独立媒体区 专门放图片/视频 尺寸固定 完美适配 */
+.timeline-media {
+    width: 90px;
+    height: 90px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff8e0;
+}
+
+.timeline-media img,
+.timeline-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* ============ 汉字连连看 专属样式 ============ */
+.page-history .game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 120px);
+    gap: 15px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.page-history .card {
+    width: 120px;
+    height: 120px;
+    background-color: #ffc857;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 10px; /* 内边距，缩小图片露出底色，区分选中/匹配状态 */
+}
+
+.page-history .card img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain; /* 图片不变形，完整展示 */
+    display: block;
+}
+
+.page-history .card .char-text {
+    width: 80%;
+    height: 80%;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    line-height: 96px;
+}
+
+.page-history .card:hover {
+    background-color: #ffc743;
+}
+
+.page-history .card.selected {
+    background-color: #fdf73c;
+}
+
+.page-history .card.matched {
+    background-color: #e98017;
+    cursor: not-allowed;
+}
+
+.page-history #result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffc857;
+    text-align: center;
+    font-weight: bold;
+}
+
+.page-history #restart {
+    margin: 10px auto;
+    display: block;
+    padding: 8px 20px;
+    border: none;
+    background-color: #ffc857;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.page-history #restart:hover {
+    background-color: #ffd470;
+}
+
+/* ============ 汉字连连看 专属样式 结束 ============ */
+
+/* 汉字播报功能样式 - 新增按钮样式 */
+.timeline-text {
+    cursor: pointer;
+    position: relative;
+    transition: all .2s ease;
+    padding-right: 30px; /* 为按钮预留空间 */
+}
+
+/* 播报按钮样式 */
+.read-btn {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ffc857;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(255, 200, 87, 0.2);
+    transition: background-color 0.2s;
+}
+
+.read-btn:hover {
+    background-color: #ffd470;
+}
+
+.read-btn.reading {
+    background-color: #ffaa33;
+}
+
+/* 悬浮提示文字 - 调整位置避免遮挡按钮 */
+.timeline-text:hover::after {
+    content: '点击按钮朗读本段介绍';
+    position: absolute;
+    right: 35px; /* 避开按钮 */
+    top: 10px;
+    background: #333;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* 朗读中的高亮样式 */
+.timeline-text.reading {
+    background-color: #fff8e0;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(255, 200, 87, 0.2);
+}
+/* 页面4：造字小秘密 - 草绿色主题（规律探索） */
+.page-method {
+    background-color: #fffaf0;
+}
+
+.page-method .nav {
+    background-color: #ffd166;
+}
+
+.page-method .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+.page-method .page-title {
+    color: #ffc857;
+    font-size: 40px; /* 大标题放大（原28px） */
+}
+
+.page-method .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+    font-size: 30px;
+}
+
+.page-method .theme-btn {
+    background-color: #ffc857;
+}
+/* 页面5：汉字里的文化 - 中国红主题（文化底蕴） */
+.page-culture {
+    background-color: #fffaf0;
+}
+
+.page-culture .nav {
+    background-color: #ffd166;
+}
+
+.page-culture .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+.page-culture .page-title {
+    color: #ffc857;
+    font-size: 40px; /* 大标题放大（原28px） */
+}
+
+.page-culture .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+    font-size: 30px;
+}
+
+.page-culture .theme-btn {
+    background-color: #ffc857;
+}
+/* 页面6：趣味汉字乐园 - 紫色主题（趣味活泼） */
+.page-fun {
+    background-color: #fffaf0;
+}
+
+.page-fun .nav {
+    background-color: #ffd166;
+}
+
+.page-fun .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+.page-fun .page-title {
+    color: #ffc857;
+    font-size: 40px; /* 大标题放大（原28px） */
+}
+
+.page-fun .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+    font-size: 30px;
+}
+
+.page-fun .theme-btn {
+    background-color: #ffc857;
+}
+
+/* 轮播容器核心样式 - 宽度调至100%满屏 */
+.carousel {
+    width: 80%;
+    /* 移除 max-width: 800px，实现全屏显示 */
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(255, 200, 87, 0.1);
+}
+
+.carousel-imgs {
+    display: flex;
+    transition: transform 0.5s ease;
+    /* 防止动画卡顿 */
+    will-change: transform;
+}
+
+.carousel-imgs img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* 切换按钮样式（优化点击流畅度） */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #ffb74d;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 10;
+    transition: all 0.3s ease;
+    /* 修复点击卡顿：禁止选中文本 + 消除点击延迟 */
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-btn:hover {
+    background: #ffb74d;
+    color: #fff;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* 指示器样式 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    user-select: none;
+}
+
+.indicator.active {
+    background: #ffb74d;
+}
+
+/* 页面6 交互优化样式 */
+.page-fun .quiz-item {
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.page-fun .quiz-item:hover {
+    background-color: rgba(255, 200, 87, 0.1);
+}
+
+.page-fun .quiz-item p:first-child {
+    margin: 0;
+    font-weight: 500;
+}
+
+.page-fun #answer1, .page-fun #answer2, .page-fun #answer3 {
+    color: #ffc857;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+/* 页面7：汉字小名家 - 深灰色主题（典雅厚重） */
+.page-master {
+    background-color: #fffaf0;
+}
+
+.page-master .nav {
+    background-color: #ffd166;
+}
+
+.page-master .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+.page-master .page-title {
+    color: #ffc857;
+    font-size: 40px; /* 大标题放大（原28px） */
+}
+
+.page-master .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+    font-size: 30px;
+}
+
+.page-master .theme-btn {
+    background-color: #ffc857;
+}
+/* 页面8：传承汉字文化 - 天蓝色主题（未来希望） */
+.page-heritage {
+    background-color: #fffaf0;
+}
+
+.page-heritage .nav {
+    background-color: #ffd166;
+}
+
+.page-heritage .nav a {
+    font-size: 16px; /* 导航标题放大（原14px） */
+    margin: 0 10px;
+}
+
+.page-heritage .page-title {
+    color: #ffc857;
+    font-size: 40px; /* 大标题放大（原28px） */
+}
+
+.page-heritage .section-title {
+    color: #ffb74d;
+    border-left-color: #ffb74d;
+    font-size: 30px;
+}
+
+.page-heritage .theme-btn {
+    background-color: #ffc857;
+}
+
+/* 留言板专属样式 */
+.message-box input, .message-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.message-list {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.message-list li {
+    list-style: none;
+    padding: 10px;
+    margin: 8px 0;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}

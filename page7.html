@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉字小名家 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+	<style>
+		/* 导航栏固定顶部 - 核心必加 */
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+			height: 70px;
+			box-sizing: border-box;
+		}
+	
+		body.page-master {
+			padding-top: 70px;
+			/* 内容下移，不被导航遮挡 */
+			min-height: 100vh;
+			margin: 0;
+			position: relative;
+		}
+	
+		/* 专门承载背景图的伪元素，让背景图透明 */
+		body.page-master::before {
+			content: "";
+			position: fixed;
+			top: 70px;/* 背景图顶部=导航栏下方 */
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("./img/背景.jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.5;/* 背景透明度！！ */
+			z-index: -1;/* 背景图在最底层，文字在上面 */
+		}
+	
+		.container,
+		.footer {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.content-wrapper {
+		    background-color: rgba(255, 254, 245, 0.7); /* 保持透明度0.7 */
+		    border-radius: 12px;
+		    /* 核心调整：上内边距15px（减小标题到容器上边框距离），左右内边距40px（增大左右空隙），下内边距20px（不变） */
+		    padding: 15px 40px 20px; 
+		    margin: 5px auto 10px; /* 与导航栏距离5px，下距10px，左右居中 */
+		    max-width: calc(100% ); /* 配合左右40px内边距，确保页面边缘左右空隙一致 */
+		    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+		    position: relative;
+		    z-index: 2;
+		}
+	</style>
+</head>
+<body class="page-master">
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <div class="container">
+		<div class="content-wrapper">
+        <h1 class="page-title">汉字里的小名家</h1>
+        
+        <!-- 开篇引导 -->
+        <div class="text-box">
+            <p style="font-size: 25px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+				汉字圈藏着不少文化名人今天咱们认识写好字的名家、讲透字的字典，再赏赏漂亮书法吧！</p>
+        </div>
+
+        <!-- 名家模块1：王羲之 -->
+        <h2 class="section-title">王羲之 · 书圣</h2>
+        <div class="img-box">
+            <img src="img/page7/王.jpg" alt="王羲之书法代表字">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+				王羲之是东晋时期的大书法家，被尊为“书圣”。他的书法灵动飘逸，笔画像裹着轻云般舒展，又暗含力量感，代表作《兰亭序》被誉为“天下第一行书”，至今仍是书法界的经典范本。</p>
+        </div>
+
+        <!-- 名家模块2：颜真卿 -->
+        <h2 class="section-title">颜真卿 · 颜体创始人</h2>
+        <div class="img-box">
+            <img src="img/page7/颜.jpg" alt="颜真卿书法代表字">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+				颜真卿是唐朝的书法大家，也是“颜体”的创始人。他的字体厚重刚正，笔画方整饱满，看着像稳立的巨石般有气势，既大气又有风骨，《祭侄文稿》《颜勤礼碑》都是他的传世名作。</p>
+        </div>
+
+        <!-- 典籍模块 -->
+        <h2 class="section-title">汉字小典籍</h2>
+        <div class="img-box">
+            <img src="img/page7/说文解字.png" alt="典籍插画">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">《说文解字》是东汉许慎编写的汉字字典，它是历史上首部系统解析汉字的典籍——不仅讲清楚每个字的写法，还会说明字的起源（比如“日”是模仿太阳的形状）、含义演变，是了解汉字“身世”的重要工具书。</p>
+        </div>
+
+       <!-- 书法欣赏角 -->
+       <h2 class="section-title">书法欣赏角</h2>
+       
+       <style>
+       /* 书法展示容器样式 */
+              .calligraphy-row {
+                  margin-bottom: 30px;
+              }
+              .calligraphy-title {
+                  margin: 15px 0;
+                  font-size: 22px;
+                  color: #ffb74d;
+                  text-align: center;
+                  font-weight: bold;
+              }
+              .calligraphy-grid {
+                  display: flex;
+                  gap: 15px;
+                  width: 100%;
+                  flex-wrap: wrap;
+              }
+              .calligraphy-item {
+                  flex: 1;
+                  min-width: 280px;
+                  position: relative;
+                  overflow: hidden;
+                  border-radius: 8px;
+                  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+              }
+              .calligraphy-img {
+                  width: 100%;
+                  height: 400px; /* 固定图片高度，宽度自适应占满列 */
+                  object-fit: cover;
+                  transition: all 0.3s ease;
+                  border-radius: 8px 8px 0 0;
+              }
+              /* 作品名称样式 - 固定在图片下方 */
+              .calligraphy-name {
+                  padding: 12px;
+                  background-color: #fff9e6;
+                  color: #e67e22;
+                  font-size: 16px;
+                  font-weight: 600;
+                  text-align: center;
+                  border-bottom: 2px solid #ffd591;
+              }
+              /* 鼠标悬浮效果：图片变暗 */
+              .calligraphy-item:hover .calligraphy-img {
+                  filter: brightness(0.5);
+              }
+              /* 介绍文字容器：白色半透明+与图片等大+居中显示 */
+              .calligraphy-desc {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 400px; /* 与图片高度一致 */
+                  background: rgba(255, 255, 255, 0.9);
+                  color: #333;
+                  font-size: 16px;
+                  padding: 20px;
+                  box-sizing: border-box;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  text-align: center;
+                  opacity: 0;
+                  transition: opacity 0.3s ease;
+              }
+              /* 鼠标悬浮时显示介绍文字 */
+              .calligraphy-item:hover .calligraphy-desc {
+                  opacity: 1;
+              }
+       </style>
+       
+       <!-- 楷书篇 -->
+       <div class="calligraphy-row">
+           <h3 class="calligraphy-title">楷书篇</h3>
+           <div class="calligraphy-grid">
+               <!-- 第一张楷书图 -->
+               <div class="calligraphy-item">
+                   <img src="img/page7/鉴赏/楷书1.jpg" alt="楷书作品1" class="calligraphy-img">
+                   <div class="calligraphy-name">颜真卿《多宝塔碑》</div>
+                   <div class="calligraphy-desc">《多宝塔碑》是大书法家颜真卿的作品，字字珠玑、丰厚遒劲，大气丰腴，如杨贵妃一样艳甲天下，结字规整，协调均衡，给人神清气爽之感，同时书法作品体现了大唐盛世以丰腴为美的审美情趣。</div>
+               </div>
+               <!-- 第二张楷书图 -->
+               <div class="calligraphy-item">
+                   <img src="img/page7/鉴赏/楷书2.jpg" alt="楷书作品2" class="calligraphy-img">
+                   <div class="calligraphy-name">欧阳询《九成宫醴泉铭》</div>
+                   <div class="calligraphy-desc">《九成宫醴泉铭》字体修长秀美，急缓自如，气象庄严肃穆，既有大家之气，又有碧玉之秀美。</div>
+               </div>
+               <!-- 第三张楷书图 -->
+               <div class="calligraphy-item">
+                   <img src="img/page7/鉴赏/楷书3.jpg" alt="楷书作品3" class="calligraphy-img">
+                   <div class="calligraphy-name">柳公权《玄秘塔碑》</div>
+                   <div class="calligraphy-desc">《玄秘塔碑》笔力如刀，刀刀见骨，字体形散神不散，搭
+接中松外紧，给人以力量万钧的豪情。</div>
+               </div>
+           </div>
+       </div>
+       
+       <!-- 行书篇 -->
+       <div class="calligraphy-row">
+           <h3 class="calligraphy-title">行书篇</h3>
+           <div class="calligraphy-grid">
+               <!-- 第一张行书图 -->
+               <div class="calligraphy-item">
+                   <img src="img/page7/鉴赏/行书1.jpg" alt="行书作品1" class="calligraphy-img">
+                   <div class="calligraphy-name">王羲之《兰亭集序》</div>
+                   <div class="calligraphy-desc">《兰亭集序》被誉为"天下第一行书"。也被誉为天下第一书法，成为书法史上的丰碑，未有一人敢说自己超越此作品。传说真迹被唐太宗带入陵墓，世间不见真迹。</div>
+               </div>
+               <!-- 第二张行书图 -->
+               <div class="calligraphy-item">
+                   <img src="img/page7/鉴赏/行书2.jpg" alt="行书作品2" class="calligraphy-img">
+                   <div class="calligraphy-name">米芾《蜀素帖》</div>
+                   <div class="calligraphy-desc">《蜀素帖》笔势自然流畅，如桃李芬芳，天真烂漫，给人精神愉悦之感。</div>
+               </div>
+               <!-- 第三张行书图 -->
+               <div class="calligraphy-item">
+                   <img src="img/page7/鉴赏/行书3.jpg" alt="行书作品3" class="calligraphy-img">
+                   <div class="calligraphy-name">颜真卿《祭侄文稿》</div>
+                   <div class="calligraphy-desc">作者于悲痛之中直抒胸臆，笔意飞动，又现偶然情不自己，稍有修改之处，更体现了作者内心悲伤之情。</div>
+               </div>
+           </div>
+       </div>
+
+
+       <!-- 书法练习田字格 -->
+       <h2 class="section-title" style="margin-top: 40px;">我来练写字</h2>
+       <p style="text-align: center; color: #a86932; margin-bottom: 16px;">看旁边的范字，在田字格里用鼠标（或手指）描一描，点"清空"重写。</p>
+       <div class="trace-wrap">
+           <div class="trace-stage">
+               <div class="trace-grid">
+                   <canvas id="traceCanvas" width="360" height="360"></canvas>
+               </div>
+               <div class="trace-side">
+                   <div class="trace-label">范字</div>
+                   <div class="trace-model" id="traceModel">永</div>
+                   <div class="trace-controls">
+                       <button class="theme-btn" id="tracePrev">上一个</button>
+                       <button class="theme-btn" id="traceNext">下一个</button>
+                       <button class="theme-btn" id="traceClear">清空重写</button>
+                   </div>
+                   <div class="trace-charinfo" id="traceCharInfo"></div>
+               </div>
+           </div>
+       </div>
+
+       <style>
+       .trace-wrap {
+           background: linear-gradient(135deg, #fff8e6, #ffedc2);
+           border-radius: 14px;
+           padding: 28px;
+           border: 1px solid #ffd166;
+           box-shadow: 0 4px 16px rgba(180,130,40,0.12);
+           max-width: 760px;
+           margin: 0 auto;
+       }
+       .trace-stage {
+           display: flex;
+           gap: 30px;
+           justify-content: center;
+           align-items: center;
+           flex-wrap: wrap;
+       }
+       .trace-grid {
+           position: relative;
+           width: 360px;
+           height: 360px;
+           background: #fff;
+           border: 3px solid #c46a10;
+           border-radius: 6px;
+       }
+       .trace-grid::before, .trace-grid::after {
+           content: "";
+           position: absolute;
+           background: repeating-linear-gradient(0deg, #f0b878, #f0b878 4px, transparent 4px, transparent 8px);
+       }
+       .trace-grid::before {
+           left: 50%; top: 0; width: 1px; height: 100%;
+       }
+       .trace-grid::after {
+           top: 50%; left: 0; height: 1px; width: 100%;
+           background: repeating-linear-gradient(90deg, #f0b878, #f0b878 4px, transparent 4px, transparent 8px);
+       }
+       #traceCanvas {
+           position: relative;
+           z-index: 2;
+           cursor: crosshair;
+           touch-action: none;
+       }
+       .trace-side { text-align: center; }
+       .trace-label { color: #a86932; font-size: 14px; margin-bottom: 6px; }
+       .trace-model {
+           font-size: 140px;
+           font-family: "楷体", KaiTi, serif;
+           color: #c46a10;
+           line-height: 1;
+           width: 180px; height: 180px;
+           display: flex; align-items: center; justify-content: center;
+           background: #fff8e6;
+           border: 2px dashed #ffb74d;
+           border-radius: 10px;
+           margin: 0 auto 18px;
+       }
+       .trace-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+       .trace-charinfo { margin-top: 14px; font-size: 15px; color: #8a6a3a; max-width: 220px; }
+       </style>
+
+       <p style="text-align: center; font-size: 14px; color: #a86932; margin-top: 30px;">资料来源：书法家生平与作品介绍参考《中国书法史》及《说文解字》相关公开出版资料整理。</p>
+	   </div>
+	</div>
+
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+    // ===== 描红本 =====
+    const traceChars = [
+        { ch: "永", info: "「永」字八法，是楷书书法的基本功。" },
+        { ch: "王", info: "三横一竖，像斧钺之形，代表权力与尊贵。" },
+        { ch: "木", info: "象形字，像一棵有根有枝的树。" },
+        { ch: "火", info: "像火焰向上腾起的样子。" },
+        { ch: "山", info: "三座山峰耸立，典型的象形字。" },
+        { ch: "水", info: "像流动的水流，中间是主流，两边是水花。" },
+        { ch: "人", info: "像一个人侧身站立的样子。" },
+        { ch: "口", info: "就是一张张开的嘴的形状。" },
+        { ch: "日", info: "圆圆的太阳，中间一点是太阳光斑。" },
+        { ch: "月", info: "弯弯的月亮，里面是桂树的影子。" }
+    ];
+    let traceIdx = 0;
+    const canvas = document.getElementById("traceCanvas");
+    const ctx = canvas.getContext("2d");
+    const model = document.getElementById("traceModel");
+    const info = document.getElementById("traceCharInfo");
+
+    function renderTrace() {
+        model.textContent = traceChars[traceIdx].ch;
+        info.textContent = traceChars[traceIdx].info;
+        clearCanvas();
+    }
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    // 画笔
+    let drawing = false;
+    function getPos(e) {
+        const r = canvas.getBoundingClientRect();
+        const cx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+        const cy = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+        return { x: cx * (canvas.width / r.width), y: cy * (canvas.height / r.height) };
+    }
+    function startDraw(e) {
+        drawing = true;
+        ctx.beginPath();
+        const p = getPos(e);
+        ctx.moveTo(p.x, p.y);
+        e.preventDefault();
+    }
+    function moveDraw(e) {
+        if (!drawing) return;
+        const p = getPos(e);
+        ctx.lineWidth = 12;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.strokeStyle = "#c46a10";
+        ctx.lineTo(p.x, p.y);
+        ctx.stroke();
+        e.preventDefault();
+    }
+    function endDraw() { drawing = false; }
+
+    canvas.addEventListener("mousedown", startDraw);
+    canvas.addEventListener("mousemove", moveDraw);
+    window.addEventListener("mouseup", endDraw);
+    canvas.addEventListener("touchstart", startDraw);
+    canvas.addEventListener("touchmove", moveDraw);
+    canvas.addEventListener("touchend", endDraw);
+
+    document.getElementById("tracePrev").addEventListener("click", () => {
+        traceIdx = (traceIdx - 1 + traceChars.length) % traceChars.length;
+        renderTrace();
+        if (typeof SFX !== "undefined") SFX.click();
+    });
+    document.getElementById("traceNext").addEventListener("click", () => {
+        traceIdx = (traceIdx + 1) % traceChars.length;
+        renderTrace();
+        if (typeof SFX !== "undefined") SFX.click();
+    });
+    document.getElementById("traceClear").addEventListener("click", () => {
+        clearCanvas();
+        if (typeof SFX !== "undefined") SFX.click();
+    });
+    renderTrace();
+    </script>
+</body>
+</html>

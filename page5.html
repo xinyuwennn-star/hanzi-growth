@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉字里的文化 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+	<style>
+		/* 导航栏固定顶部 - 核心必加 */
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+			height: 70px;
+			box-sizing: border-box;
+		}
+	
+		body.page-culture {
+			padding-top: 70px;
+			/* 内容下移，不被导航遮挡 */
+			min-height: 100vh;
+			margin: 0;
+			position: relative;
+		}
+	
+		/* 专门承载背景图的伪元素，让背景图透明 */
+		body.page-culture::before {
+			content: "";
+			position: fixed;
+			top: 70px;/* 背景图顶部=导航栏下方 */
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("./img/背景.jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.5;/* 背景透明度！！ */
+			z-index: -1;/* 背景图在最底层，文字在上面 */
+		}
+	
+		.container,
+		.footer {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.content-wrapper {
+		    background-color: rgba(255, 254, 245, 0.7); /* 保持透明度0.7 */
+		    border-radius: 12px;
+		    /* 核心调整：上内边距15px（减小标题到容器上边框距离），左右内边距40px（增大左右空隙），下内边距20px（不变） */
+		    padding: 15px 40px 20px; 
+		    margin: 5px auto 10px; /* 与导航栏距离5px，下距10px，左右居中 */
+		    max-width: calc(100% ); /* 配合左右40px内边距，确保页面边缘左右空隙一致 */
+		    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+		    position: relative;
+		    z-index: 2;
+		}
+	</style>
+</head>
+<body class="page-culture">
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <div class="container">
+		<div class="content-wrapper">
+        <h1 class="page-title">汉字里的小文化</h1>
+        
+        <!-- 开篇引导 -->
+        <div class="text-box">
+            <p style="font-size: 25px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+				汉字是中华优秀传统文化的根，一撇一捺都藏着大智慧。
+			今天就让我们走进汉字，读懂汉字里藏着的文化密码，感受老祖宗的智慧吧！</p>
+        </div>
+
+        <!-- 文化模块1：自然里的汉字 -->
+        <h2 class="section-title">自然里的汉字</h2>
+        <div class="img-box">
+            <img src="img/page5汉字里的文化/自然汉字.jpg"alt="自然汉字插画">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">咱们中国的汉字，最早就是从描摹大自然开始的，很多汉字都是「画」出来的哦！
+			比如「日」字，像一轮圆圆的太阳；「月」字，像弯弯的月牙；「山」字，像连绵起伏的山峰；
+			「水」字，像弯弯的流水波纹。还有「云、雨、风、田、禾」这些字，都是古人照着大自然里的样子一点点简化而来的。
+			古人亲近自然、观察自然，把天地万物的模样融进汉字里，让我们看到这些字，就能立刻想到对应的自然景象，
+			这就是汉字最质朴的美，也是古人与自然和谐相处的美好心意。</p>
+        </div>
+
+        <!-- 文化模块2：生活里的汉字 -->
+        <h2 class="section-title">生活里的汉字</h2>
+        <div class="img-box">
+            <img src="img/page5汉字里的文化/生活汉字 家.jpg" alt="生活汉字插画">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">汉字也是古人生活的「记录本」，很多常用汉字，都藏着古人的日常烟火气，记录着古人的衣食住行。
+			比如「家」字，宝盖头像房屋，下面的「豕」代表小猪，古人家里养猪就是安居乐业，有房有猪就是温暖的家；
+			「食」字像盛满食物的器皿，一看就和吃饭有关；「衣」字像一件展开的衣服，描摹出衣服的领口和衣袖；
+			「行」字像十字路口，代表着出行赶路；还有「田、耕、炊、休、安」这些字，
+			分别记录了耕种、做饭、休息、安稳的生活状态。这些汉字把古人的生活场景定格下来，历经千年，
+			我们今天用到这些字，依然能读懂其中的生活暖意，这就是汉字传承的温度。</p>
+        </div>
+
+        <!-- 文化模块3：美德里的汉字 -->
+        <h2 class="section-title">美德里的汉字</h2>
+        <div class="img-box">
+            <img src="img/page5汉字里的文化/美德汉字.jpg" alt="美德汉字插画">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">最珍贵的是，咱们的汉字里，还藏着中华民族代代相传的美好品德，一撇一捺都刻着做人的道理，
+			这也是汉字最深沉的文化内涵。「仁」字，左边是人，右边是二，一种常见的说法是：它寓意人与人之间要相互关爱、彼此包容；
+			「孝」字，上面是「老」的上半部分，下面是「子」，代表子女搀扶着老人，是孝顺长辈的美好品德；
+			「信」字，左边是人，右边是言，告诉我们做人要言行一致、诚实守信；
+			「礼」字有礼节、谦让之意，教会我们待人谦和有礼；还有「善、诚、敬、和」这些字，每一个都饱含着美好的期许。
+			汉字不仅是交流的工具，更像一位老师，把中华传统美德融进字形字义里，
+			让美德通过汉字代代相传，刻进每个中国人的骨子里。</p>
+        </div>
+
+        <!-- 文化小常识延伸 -->
+        <div class="interactive-box" >
+            <h3 class="section-title">趣味小知识</h3>
+            <div class="cultural-tips" style="padding: 15px; line-height: 1.8;">
+                <h4 style="color: #a86932; font-size: 22px; margin: 10px 0; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">1. 谐音吉祥话</h4>
+                <ul style="list-style: none; padding-left: 20px; font-size: 18px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+                    <li>“福”字倒贴：谐音“福到”，寓意福气临门，是春节家家户户必做的习俗。</li>
+                    <li>过年吃鱼：“鱼”谐音“余”，象征“年年有余”，代表每年都有富余的粮食和财富。</li>
+                    <li>结婚送枣和栗子：“枣”谐音“早”，“栗子”谐音“立子”，寓意“早生贵子”。</li>
+                </ul>
+            
+                <h4 style="color: #a86932; font-size: 22px; margin: 10px 0; margin-top: 20px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">2. 谐音歇后语</h4>
+                <ul style="list-style: none; padding-left: 20px; font-size: 18px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+                    <li>孔夫子搬家——尽是输（书）：利用“输”和“书”的谐音，既有趣味性，又能记住两种读音。</li>
+                    <li>小葱拌豆腐——一清（青）二白：“清”和“青”同音，比喻做人做事清白、不掺假。</li>
+                    <li>外甥打灯笼——照旧（舅）：“旧”和“舅”谐音，指事情和原来一样，没有变化。</li>
+                </ul>
+            
+                <h4 style="color: #a86932; font-size: 22px; margin: 10px 0; margin-top: 20px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">3. 谐音避讳小知识</h4>
+                <ul style="list-style: none; padding-left: 20px; font-size: 18px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; margin-bottom: 40px;">
+                    <li>古代船家不说“沉”字：因为“沉”和“沉船”直接相关，不吉利，遇到“陈”姓也会改叫“耳东姓”，避开谐音。</li>
+                    <li>梨不能分着吃：“分梨”谐音“分离”，被认为是不吉利的象征，所以大家习惯整只梨单独吃。</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 14px; color: #a86932; margin-top: 30px;">资料来源：字义与文化解读参考《说文解字》、汉典（zdic.net）及公开传统文化资料整理，部分通俗解读为便于理解的说法。</p>
+    </div>
+	</div>
+
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

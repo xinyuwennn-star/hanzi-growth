@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉字成长史 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+	<style>
+		/* 导航栏固定顶部 - 核心必加 */
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+			height: 70px;
+			box-sizing: border-box;
+		}
+	
+		body.page-history {
+			padding-top: 70px;
+			/* 内容下移，不被导航遮挡 */
+			min-height: 100vh;
+			margin: 0;
+			position: relative;
+		}
+	
+		/* 专门承载背景图的伪元素，让背景图透明 */
+		body.page-history::before {
+			content: "";
+			position: fixed;
+			top: 70px;/* 背景图顶部=导航栏下方 */
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("./img/背景.jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.5;/* 背景透明度！！ */
+			z-index: -1;/* 背景图在最底层，文字在上面 */
+		}
+	
+		.container,
+		.footer {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.content-wrapper {
+		    background-color: rgba(255, 254, 245, 0.7); /* 保持透明度0.7 */
+		    border-radius: 12px;
+		    /* 核心调整：上内边距15px（减小标题到容器上边框距离），左右内边距40px（增大左右空隙），下内边距20px（不变） */
+		    padding: 15px 40px 20px; 
+		    margin: 5px auto 10px; /* 与导航栏距离5px，下距10px，左右居中 */
+		    max-width: calc(100% ); /* 配合左右40px内边距，确保页面边缘左右空隙一致 */
+		    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+		    position: relative;
+		    z-index: 2;
+		}
+	</style>
+</head>
+<body class="page-history">
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <div class="container">
+		<div class="content-wrapper">
+        <h1 class="page-title">汉字成长史</h1>
+        
+        <div class="text-box">
+            <p style="font-size: 25px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+            几千年来，汉字的样貌不断变化，却始终承载着中华的文化与智慧，一起来看看汉字的成长足迹吧！</p>
+        </div>
+
+        <!-- ============ 汉字时光机：拖动滑块穿越三千年 ============ -->
+        <style>
+        .timemachine { max-width: 640px; margin: 10px auto 40px; background: linear-gradient(160deg, #fffdf5, #fdf3d8); border-radius: 16px; padding: 25px 30px 30px; box-shadow: 0 6px 20px rgba(166, 105, 50, 0.15); text-align: center; border: 1px solid #f3e2b8; }
+        .tm-stage { position: relative; width: 260px; height: 260px; margin: 10px auto; background: #fff; border-radius: 14px; border: 3px solid #ead9ae; box-shadow: inset 0 0 20px rgba(166, 105, 50, 0.08); overflow: hidden; }
+        .tm-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 18px; box-sizing: border-box; opacity: 0; transform: scale(1.06); transition: opacity 0.45s ease, transform 0.45s ease; }
+        .tm-stage img.tm-active { opacity: 1; transform: scale(1); }
+        .tm-slider { width: 100%; margin: 18px 0 4px; accent-color: #e6a23c; height: 34px; cursor: pointer; }
+        .tm-ticks { display: flex; justify-content: space-between; font-size: 12px; color: #c9a86a; padding: 0 6px; }
+        .tm-caption { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+        .tm-era { font-size: 15px; color: #a86932; }
+        .tm-font { font-size: 26px; font-weight: bold; color: #c47f1e; font-family: "楷体", KaiTi, serif; }
+        .tm-tip { margin-top: 14px; font-size: 14px; color: #b08b4d; }
+        </style>
+        <div class="timemachine">
+            <h2 class="section-title" style="text-align: center; border-left: none; padding-left: 0;">汉字时光机 · 拖动滑块穿越三千年</h2>
+            <div class="tm-stage" id="tmStage">
+                <img src="./img/page3汉字成长史/时间轴/山 甲骨文.jpg" alt="山字甲骨文" class="tm-active">
+                <img src="./img/page3汉字成长史/时间轴/山 金文.jpg" alt="山字金文">
+                <img src="./img/page3汉字成长史/时间轴/山 小篆.jpg" alt="山字小篆">
+                <img src="./img/page3汉字成长史/时间轴/山隶书.jpg" alt="山字隶书">
+                <img src="./img/page3汉字成长史/时间轴/山 草书.jpg" alt="山字草书">
+                <img src="./img/page3汉字成长史/时间轴/山 楷书.jpg" alt="山字楷书">
+                <img src="./img/page3汉字成长史/时间轴/山 行书.jpg" alt="山字行书">
+            </div>
+            <input type="range" class="tm-slider" id="tmSlider" min="0" max="6" step="1" value="0" aria-label="拖动查看汉字演变">
+            <div class="tm-ticks"><span>商</span><span>周</span><span>秦</span><span>汉</span><span>汉末</span><span>魏晋</span><span>魏晋</span></div>
+            <div class="tm-caption">
+                <span class="tm-era" id="tmEra">商朝 · 约公元前 1300 年</span>
+                <span class="tm-font" id="tmFont">甲骨文</span>
+            </div>
+            <p class="tm-tip">左右拖动滑块，看「山」字从一幅小画一步步变成今天的汉字</p>
+        </div>
+        <script>
+        (function () {
+            const imgs = document.querySelectorAll('#tmStage img');
+            const slider = document.getElementById('tmSlider');
+            const era = document.getElementById('tmEra');
+            const font = document.getElementById('tmFont');
+            const stages = [
+                { font: '甲骨文', era: '商朝 · 约公元前 1300 年' },
+                { font: '金文', era: '周朝 · 约公元前 1000 年' },
+                { font: '小篆', era: '秦朝 · 公元前 221 年' },
+                { font: '隶书', era: '汉朝 · 约公元前 200 年' },
+                { font: '草书', era: '汉末 · 约公元 200 年' },
+                { font: '楷书', era: '魏晋 · 约公元 300 年' },
+                { font: '行书', era: '魏晋 · 约公元 350 年' }
+            ];
+            slider.addEventListener('input', function () {
+                const i = +this.value;
+                imgs.forEach((im, idx) => im.classList.toggle('tm-active', idx === i));
+                era.textContent = stages[i].era;
+                font.textContent = stages[i].font;
+            });
+        })();
+        </script>
+
+        <div class="timeline">
+            <!-- 甲骨文 - 左 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-text" id="text-jiagu">
+                        <h3>甲骨文</h3>
+                        <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">甲骨文是我国最早的成熟文字，刻在龟甲和兽骨上，字形像一幅幅小图画，大多描摹事物的真实形态，笔画纤细且弯曲，充满了原始的象形美感。</p>
+                        <button class="play-btn" data-text="甲骨文。甲骨文是我国最早的成熟文字，刻在龟甲和兽骨上，字形像一幅幅小图画，大多描摹事物的真实形态，笔画纤细且弯曲，充满了原始的象形美感。" style="float: right; margin-top: 10px; width: 40px; height: 40px; border: none; border-radius: 50%; background-color: #ffd700; color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 3px; outline: none;">▶</button>
+                    </div>
+                    <div class="timeline-media">
+                        <img src="./img/page3汉字成长史/时间轴/山 甲骨文.jpg" alt="山字甲骨文">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 金文 - 右 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-text" id="text-jin">
+                        <h3>金文</h3>
+                        <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">金文又叫钟鼎文，刻在青铜器上，字形比甲骨文更整齐，笔画粗壮饱满，结构更稳重，象形的特点依然很明显，是汉字演变的重要一步。</p>
+                        <button class="play-btn" data-text="金文。金文又叫钟鼎文，刻在青铜器上，字形比甲骨文更整齐，笔画粗壮饱满，结构更稳重，象形的特点依然很明显，是汉字演变的重要一步。" style="float: right; margin-top: 10px; width: 40px; height: 40px; border: none; border-radius: 50%; background-color: #ffd700; color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 3px; outline: none;">▶</button>
+                    </div>
+                    <div class="timeline-media">
+                        <img src="./img/page3汉字成长史/时间轴/山 金文.jpg" alt="山字金文">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 小篆 - 左 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-text " id="text-xiaozhuan">
+                        <h3>小篆</h3>
+                        <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">小篆是秦朝统一后的标准字体，字形变得圆润匀称、线条流畅，笔画粗细一致，彻底摆脱了图画的形态，汉字开始走向规整和统一。</p>
+                        <button class="play-btn" data-text="小篆。小篆是秦朝统一后的标准字体，字形变得圆润匀称、线条流畅，笔画粗细一致，彻底摆脱了图画的形态，汉字开始走向规整和统一。" style="float: right; margin-top: 10px; width: 40px; height: 40px; border: none; border-radius: 50%; background-color: #ffd700; color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 3px; outline: none;">▶</button>
+                    </div>
+                    <div class="timeline-media">
+                        <img src="./img/page3汉字成长史/时间轴/山 小篆.jpg" alt="山字小篆">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 隶书 - 右 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-text" id="text-lishu">
+                        <h3>隶书</h3>
+                        <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">隶书是汉朝的主流字体，字形变圆为方，笔画出现了横平竖直的特点，还有了明显的撇捺顿挫，书写更简便，汉字的实用性大大提升。</p>
+                        <button class="play-btn" data-text="隶书。隶书是汉朝的主流字体，字形变圆为方，笔画出现了横平竖直的特点，还有了明显的撇捺顿挫，书写更简便，汉字的实用性大大提升。" style="float: right; margin-top: 10px; width: 40px; height: 40px; border: none; border-radius: 50%; background-color: #ffd700; color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 3px; outline: none;">▶</button>
+                    </div>
+                    <div class="timeline-media">
+                        <img src="./img/page3汉字成长史/时间轴/山隶书.jpg" alt="山字隶书">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 草书 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-text" id="text-caoshu">
+                        <h3>草书</h3>
+                        <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">草书由隶书演变而来，笔画简约连绵、字形高度变形，书写速度极快，讲究气韵连贯和笔墨意境，重写意轻工整，是极具美感的书法艺术字体。</p>
+                        <button class="play-btn" data-text="草书。草书由隶书演变而来，笔画简约连绵、字形高度变形，书写速度极快，讲究气韵连贯和笔墨意境，重写意轻工整，是极具美感的书法艺术字体。" style="float: right; margin-top: 10px; width: 40px; height: 40px; border: none; border-radius: 50%; background-color: #ffd700; color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 3px; outline: none;">▶</button>
+                    </div>
+                    <div class="timeline-media">
+                        <img src="./img/page3汉字成长史/时间轴/山 草书.jpg" alt="山字草书">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 楷书 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-text" id="text-kaishu">
+                        <h3>楷书</h3>
+                        <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">楷书也叫正楷，由隶书规整演变而来，字形方方正正、笔画清晰规范，横平竖直、结构严谨，是我们现在日常书写和印刷的标准字体。</p>
+                        <button class="play-btn" data-text="楷书。楷书也叫正楷，由隶书规整演变而来，字形方方正正、笔画清晰规范，横平竖直、结构严谨，是我们现在日常书写和印刷的标准字体。" style="float: right; margin-top: 10px; width: 40px; height: 40px; border: none; border-radius: 50%; background-color: #ffd700; color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 3px; outline: none;">▶</button>
+                    </div>
+                    <div class="timeline-media">
+                        <img src="./img/page3汉字成长史/时间轴/山 楷书.jpg" alt="山字楷书">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行书 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-text" id="text-xingshu">
+                        <h3>行书</h3>
+                        <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">行书诞生于楷书之后，是介于楷书与草书之间的字体，笔画连绵呼应、书写行云流水，工整易认又书写快捷，兼顾实用性与艺术性。</p>
+                        <button class="play-btn" data-text="行书。行书诞生于楷书之后，是介于楷书与草书之间的字体，笔画连绵呼应、书写行云流水，工整易认又书写快捷，兼顾实用性与艺术性。" style="float: right; margin-top: 10px; width: 40px; height: 40px; border: none; border-radius: 50%; background-color: #ffd700; color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 3px; outline: none;">▶</button>
+                    </div>
+                    <div class="timeline-media">
+                        <img src="./img/page3汉字成长史/时间轴/山 行书.jpg" alt="山字行书">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-box">
+            <div class="text-box">
+                <h2 class="section-title">小测试：汉字连连看</h2>
+                <p>玩法：点击卡片选中，匹配对应的不同字体和现代汉字即可消除，全部匹配成功闯关完成！</p>
+            </div>
+            <div class="game-container" id="gameContainer"></div>
+            <div id="result"></div>
+            <button id="restart" style="display: none;">重新开始游戏</button>
+            <div id="quiz-result"></div>
+        </div>
+
+        <p style="text-align: center; font-size: 14px; color: #a86932; margin-top: 30px;">资料来源：汉字字体演变知识参考《说文解字》、教育部《通用规范汉字表》及公开文字学资料整理。</p>
+    </div>
+		</div>
+
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+        // 每段文字对应的童声 mp3（edge-tts 晓伊卡通少女音）
+        const AUDIO_MAP = {
+            'text-jiagu':    './audio/jiaguwen.mp3',
+            'text-jin':      './audio/jinwen.mp3',
+            'text-xiaozhuan':'./audio/xiaozhuan.mp3',
+            'text-lishu':    './audio/lishu.mp3',
+            'text-caoshu':   './audio/caoshu.mp3',
+            'text-kaishu':   './audio/kaishu.mp3',
+            'text-xingshu':  './audio/xingshu.mp3',
+        };
+
+        let activeAudio = null;
+        let activeBtn = null;
+
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const wrap = this.closest('.timeline-text');
+                const audioSrc = wrap ? AUDIO_MAP[wrap.id] : null;
+                if (!audioSrc) return;
+
+                // 情况1：当前按钮正在播放 → 暂停
+                if (this === activeBtn && activeAudio) {
+                    activeAudio.pause();
+                    activeAudio.currentTime = 0;
+                    this.innerText = '▶';
+                    this.style.backgroundColor = '#ffd700';
+                    activeAudio = null;
+                    activeBtn = null;
+                    return;
+                }
+
+                // 情况2：其他按钮在播 → 停掉
+                if (activeAudio) {
+                    activeAudio.pause();
+                    activeAudio.currentTime = 0;
+                    activeBtn.innerText = '▶';
+                    activeBtn.style.backgroundColor = '#ffd700';
+                }
+
+                // 情况3：播放新音频
+                const audio = new Audio(audioSrc);
+                audio.play().catch(()=>{});
+                this.innerText = '❚❚';
+                this.style.backgroundColor = '#ffb800';
+                activeAudio = audio;
+                activeBtn = this;
+
+                const reset = () => {
+                    this.innerText = '▶';
+                    this.style.backgroundColor = '#ffd700';
+                    activeAudio = null;
+                    activeBtn = null;
+                };
+                audio.onended = reset;
+                audio.onerror = reset;
+            });
+        });
+    </script>
+</body>
+</html>

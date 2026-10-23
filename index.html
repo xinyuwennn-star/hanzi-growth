@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+</head>
+<body class="page-index">
+    <!-- 顶部导航栏 -->
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <!-- 全屏轮播banner -->
+    <div id="banner-container">
+        <div id="banner-wrapper">
+            <img src="img/banners/banner1.png" alt="甲骨文画《春晓》">
+            <img src="img/banners/banner2.png" alt="有趣的象形字">
+            <img src="img/banners/banner3.png" alt="汉字如画">
+            <img src="img/banners/banner4.jpg" alt="汉字的演变 日">
+            <img src="img/banners/banner5.png" alt="甲骨文画">
+            <img src="img/banners/banner6.jpg" alt="汉字如画 山">
+            <img src="img/banners/banner7.jpg" alt="汉字的演变 人">
+            <img src="img/banners/banner8.png" alt="甲骨文画">
+        </div>
+        <button class="banner-arrow prev" id="bannerPrev">‹</button>
+        <button class="banner-arrow next" id="bannerNext">›</button>
+        <div class="banner-dots" id="bannerDots"></div>
+        <!-- 居中文字标语+简介 -->
+        <div class="banner-text-box">
+            <h1 class="banner-title">趣探汉字·乐享文韵</h1>
+            <p class="banner-desc">穿越千年时光，探索汉字从甲骨文到现代文的奇妙旅程，感受中华文化的深厚底蕴～</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 快捷功能按钮 -->
+        <div class="btn-group">
+            <a href="./page2.html" class="theme-btn">汉字由来</a>
+            <a href="./page3.html" class="theme-btn">汉字成长</a>
+            <a href="./page6.html" class="theme-btn">汉字乐园</a>
+        </div>
+
+        <!-- 姓氏字源卡生成器 -->
+        <h2 class="section-title" style="color: #ffb74d;">姓氏字源卡 · 生成你的姓氏海报</h2>
+        <div class="surname-lab">
+            <p style="font-size: 18px; color: #a86932;">每个姓氏都藏着上千年的故事。输入你的姓，看看它的来历，还能生成专属海报保存下来！</p>
+            <div class="surname-row">
+                <input type="text" id="surnameInput" maxlength="2" placeholder="输入你的姓氏：">
+                <button class="theme-btn" id="surnameBtn">生成字源卡</button>
+            </div>
+            <div class="surname-msg" id="surnameMsg"></div>
+            <div class="flip-card" id="flipCard" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <canvas id="surnameCanvas" width="640" height="800"></canvas>
+                    </div>
+                    <div class="flip-back">
+                        <div class="flip-char" id="flipChar"></div>
+                        <div class="flip-desc" id="flipDesc"></div>
+                        <div class="flip-hint">点卡片翻回正面</div>
+                    </div>
+                </div>
+            </div>
+            <div class="surname-actions" id="surnameActions">
+                <button class="theme-btn" id="downloadCardBtn">保存海报</button>
+            </div>
+        </div>
+
+        <!-- 一个字的三千年：自动演变动画 -->
+        <h2 class="section-title" style="color: #ffb74d;">⏳ 一个字的三千年</h2>
+        <div class="evolution-show">
+            <div class="evolution-stage" id="evoStage">
+                <img src="./img/page3汉字成长史/时间轴/山 甲骨文.jpg" alt="山字甲骨文" class="evo-active">
+                <img src="./img/page3汉字成长史/时间轴/山 金文.jpg" alt="山字金文">
+                <img src="./img/page3汉字成长史/时间轴/山 小篆.jpg" alt="山字小篆">
+                <img src="./img/page3汉字成长史/时间轴/山隶书.jpg" alt="山字隶书">
+                <img src="./img/page3汉字成长史/时间轴/山 草书.jpg" alt="山字草书">
+                <img src="./img/page3汉字成长史/时间轴/山 楷书.jpg" alt="山字楷书">
+                <img src="./img/page3汉字成长史/时间轴/山 行书.jpg" alt="山字行书">
+            </div>
+            <div class="evolution-label" id="evoLabel">商朝 · 甲骨文</div>
+        </div>
+
+        <!-- 勋章墙 -->
+        <h2 class="section-title" style="color: #ffb74d;">我的汉字勋章墙</h2>
+        <div class="interactive-box" style="text-align: center;">
+            <div class="badge-progress-wrap">
+                <div class="badge-title" id="badgeTitle">称号：小书童</div>
+                <div class="badge-progress-bar">
+                    <div class="badge-progress-fill" id="badgeFill"></div>
+                </div>
+                <p style="margin-top:8px;font-size:15px;color:#a86932;" id="badgeProgress">去各个页面闯关答题，集齐 6 枚勋章，成为「汉字小达人」！</p>
+            </div>
+            <div class="badge-wall" id="badgeWall" style="margin-top:16px;"></div>
+            <p id="badgeCongrats" style="display: none; font-size: 22px; color: #c0392b; font-weight: bold; margin-top: 10px;">勋章集齐！你就是当之无愧的「汉字小达人」！</p>
+        </div>
+
+        <!-- 底部说明 -->
+        <div class="text-box index-text">
+            <p>欢迎来到汉字奇妙之旅！这里是专为充满好奇心的中小学生打造的汉字学习乐园。我们带你穿越时空，探寻每一个汉字的起源故事与演变历史，揭秘古人造字的无穷智慧。在这里，你不仅能深刻理解汉字背后的文化内涵，还能通过趣味互动游戏，在玩乐中轻松掌握汉字知识。让我们一起开启这段奇妙旅程，感受中华汉字的博大精深与独特魅力吧！</p>
+            <p>家长引导提示：建议陪同孩子共同探索，鼓励孩子参与互动答题，在趣味中提升对传统文化的认知与热爱～</p>
+        </div>
+    </div>
+
+    <!-- 底部版权 -->
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+        // 8张图片自动轮播核心逻辑
+        let currentIndex = 0;
+        const bannerWrapper = document.getElementById('banner-wrapper');
+        const bannerCount = 8;
+        const intervalTime = 4000;
+        const dotsBox = document.getElementById('bannerDots');
+        // 生成小圆点
+        for (let i = 0; i < bannerCount; i++) {
+            const d = document.createElement('span');
+            if (i === 0) d.classList.add('on');
+            d.addEventListener('click', () => goBanner(i));
+            dotsBox.appendChild(d);
+        }
+        function goBanner(i) {
+            currentIndex = (i + bannerCount) % bannerCount;
+            bannerWrapper.style.transform = `translateX(-${currentIndex * 12.5}%)`;
+            dotsBox.querySelectorAll('span').forEach((s, idx) => s.classList.toggle('on', idx === currentIndex));
+            restartAuto();
+        }
+        function nextBanner() { goBanner(currentIndex + 1); }
+        function prevBanner() { goBanner(currentIndex - 1); }
+        let timer = setInterval(nextBanner, intervalTime);
+        function restartAuto() {
+            clearInterval(timer);
+            timer = setInterval(nextBanner, intervalTime);
+        }
+        document.getElementById('bannerNext').addEventListener('click', nextBanner);
+        document.getElementById('bannerPrev').addEventListener('click', prevBanner);
+
+        // ========== 新增核心功能：滚动时标题简介同步上移 + 边界限制 ==========
+        const bannerTextBox = document.querySelector('.banner-text-box');
+        const navHeight = 60; // 和css里的导航栏高度一致
+        const maxMoveUp = 180; // 文字最大上移距离（可调整，越大上移越多）
+        window.addEventListener('scroll', function() {
+            // 获取滚动距离
+            const scrollTop = window.scrollY;
+            // 计算文字上移距离：滚动越多上移越多，但不超过设定的最大值
+            const moveDistance = Math.min(scrollTop * 0.6, maxMoveUp);
+            // 设置文字位置：上移 + 永远在导航栏下方，不超出界面
+            bannerTextBox.style.transform = `translate(-50%, calc(-50% - ${moveDistance}px))`;
+            bannerTextBox.style.top = `${50}%`;
+            // 限制文字最顶部位置，不能超过导航栏下方
+            const minTop = navHeight + 50;
+            const currentTop = bannerTextBox.getBoundingClientRect().top;
+            if(currentTop < minTop){
+                bannerTextBox.style.top = `${minTop + bannerTextBox.offsetHeight/2}px`;
+                bannerTextBox.style.transform = `translateX(-50%)`;
+            }
+            // 新增：滚出 banner 区域后文字框淡出，避免透过下方半透明内容隐约可见
+            const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+            const fadeStart = vh * 0.30;
+            const fadeEnd = vh * 0.65;
+            const fadeRatio = Math.max(0, Math.min(1, 1 - (scrollTop - fadeStart) / (fadeEnd - fadeStart)));
+            bannerTextBox.style.opacity = fadeRatio;
+        });
+    </script>
+
+    <script>
+    (function () {
+        // ========== 姓氏字源卡生成器 ==========
+        const surnameData = {
+            "王": "一说「王」的甲骨文像斧钺之形，斧钺象征权力，后来引申为君王、首领。",
+            "李": "上「木」下「子」，本义就是李树和它的果实，是历史悠久的姓氏。",
+            "张": "左「弓」右「长」，本义是拉开弓弦，「张弓搭箭」的「张」就是它。",
+            "刘": "繁体写作「劉」，字形里有「金」有「刀」，一说本义与兵器有关，后来主要用作姓氏。",
+            "陈": "繁体写作「陳」，本义是陈列、排列，也是古代一个诸侯国的名字。",
+            "杨": "左「木」右「昜」，本义是杨树，古人常种杨于道旁，后成为大姓。",
+            "黄": "一说「黄」的古字形像人佩戴玉璜，后来借作颜色名，也是常见姓氏。",
+            "赵": "左「走」右「肖」，本义是快步行走，战国七雄之一的赵国就以它为号。",
+            "吴": "繁体写作「吳」，一说像人奔跑呼喊的样子，本义与大声说话有关。",
+            "周": "甲骨文里的「周」像阡陌纵横的田地，本义周密、周全，也是朝代名。",
+            "徐": "左「彳」右「余」，本义是慢慢地走，「徐徐」一词至今还在用。",
+            "孙": "左「子」右「系」，像丝线相连、子孙相承，本义就是儿子的儿子。",
+            "马": "甲骨文里的「马」就是一匹马的简笔画：有马头、鬃毛和四条腿，典型象形字。",
+            "朱": "「木」的中间加一点，是指事字，本义指树心为红色的赤心木，后表红色。",
+            "胡": "左「古」右「月（肉）」，本义指兽类下巴下垂的肉，后借作姓氏。",
+            "郭": "「郭」本义指外城的城墙，「城郭」一词里还保留着这个意思。",
+            "何": "左「人」右「可」，本义是肩扛、担荷（后来写作「荷」），后借作姓氏。",
+            "林": "两棵「木」并排成「林」，甲骨文里就有它，本义就是成片的树林。",
+            "罗": "繁体写作「羅」，上面是「网」，下面是「隹（鸟）」，本义是张网捕鸟。",
+            "郑": "繁体写作「鄭」，本义与隆重地祭奠、奠酒有关，「郑重」一词由此而来。",
+            "梁": "「梁」里有「木」有「水」，本义是架在水上的桥，后来也指房梁。",
+            "谢": "左「言」右「射」，本义是辞让、辞别，后来引申出感谢的意思。",
+            "宋": "上「宀（房子）」下「木」，本义与居所有关，后来成为国号和姓氏。",
+            "唐": "「唐」的本义是浩大的言语，后来成为朝代名，也是我们熟知的大姓。"
+        };
+
+        const input = document.getElementById("surnameInput");
+        const btn = document.getElementById("surnameBtn");
+        const msg = document.getElementById("surnameMsg");
+        const canvas = document.getElementById("surnameCanvas");
+        const actions = document.getElementById("surnameActions");
+        const flipCard = document.getElementById("flipCard");
+        const flipChar = document.getElementById("flipChar");
+        const flipDesc = document.getElementById("flipDesc");
+        // 点击翻转
+        flipCard.addEventListener("click", () => {
+            flipCard.classList.toggle("flipped");
+            if (typeof SFX !== "undefined") SFX.click();
+        });
+        const dlBtn = document.getElementById("downloadCardBtn");
+        const ctx = canvas.getContext("2d");
+
+        function wrapText(text, maxWidth, font) {
+            ctx.font = font;
+            const lines = [];
+            let line = "";
+            for (const ch of text) {
+                if (ctx.measureText(line + ch).width > maxWidth && line) {
+                    lines.push(line);
+                    line = ch;
+                } else {
+                    line += ch;
+                }
+            }
+            if (line) lines.push(line);
+            return lines;
+        }
+
+        function drawCard(surname, story) {
+            const W = canvas.width, H = canvas.height;
+            // 宣纸底
+            ctx.fillStyle = "#f7ecd0";
+            ctx.fillRect(0, 0, W, H);
+            // 纹理噪点
+            ctx.fillStyle = "rgba(166, 105, 50, 0.05)";
+            for (let i = 0; i < 400; i++) {
+                ctx.fillRect(Math.random() * W, Math.random() * H, 2, 2);
+            }
+            // 双线边框
+            ctx.strokeStyle = "#a86932";
+            ctx.lineWidth = 6;
+            ctx.strokeRect(18, 18, W - 36, H - 36);
+            ctx.lineWidth = 2;
+            ctx.strokeRect(32, 32, W - 64, H - 64);
+            // 顶部标题
+            ctx.fillStyle = "#a86932";
+            ctx.font = "bold 34px KaiTi, 楷体, serif";
+            ctx.textAlign = "center";
+            ctx.fillText("姓 氏 字 源 卡", W / 2, 90);
+            // 姓氏大字
+            ctx.fillStyle = "#4a2f17";
+            ctx.font = "bold 210px KaiTi, 楷体, serif";
+            ctx.fillText(surname, W / 2, 330);
+            // 分隔线
+            ctx.strokeStyle = "#c9a86a";
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(110, 390);
+            ctx.lineTo(W - 110, 390);
+            ctx.stroke();
+            // 字源故事
+            ctx.fillStyle = "#5d4530";
+            const lines = wrapText(story, W - 160, "28px KaiTi, 楷体, serif");
+            ctx.font = "28px KaiTi, 楷体, serif";
+            lines.forEach((line, i) => ctx.fillText(line, W / 2, 450 + i * 46));
+            // 红印章
+            const sealSize = 96, sx = W - 170, sy = H - 200;
+            ctx.fillStyle = "#c0392b";
+            ctx.beginPath();
+            ctx.roundRect(sx, sy, sealSize, sealSize, 12);
+            ctx.fill();
+            ctx.fillStyle = "#fff";
+            ctx.font = "bold 56px KaiTi, 楷体, serif";
+            ctx.fillText(surname, sx + sealSize / 2, sy + sealSize / 2 + 20);
+            // 底部品牌
+            ctx.fillStyle = "#a86932";
+            ctx.font = "22px KaiTi, 楷体, serif";
+            ctx.fillText("汉字成长记 · 趣探汉字 乐享文韵", W / 2, H - 60);
+        }
+
+        btn.addEventListener("click", () => {
+            const surname = (input.value || "").trim().slice(0, 1);
+            if (!surname) {
+                msg.textContent = "先输入一个姓氏哦～";
+                flipCard.style.display = "none";
+                actions.style.display = "none";
+                return;
+            }
+            const story = surnameData[surname];
+            if (!story) {
+                msg.textContent = "这个姓氏的字源还在整理中，试试常见的姓：王、李、张、刘、陈、杨、黄、赵、周、吴、马、林……";
+                flipCard.style.display = "none";
+                actions.style.display = "none";
+                return;
+            }
+            msg.textContent = "";
+            drawCard(surname, story);
+            // 填充背面
+            flipChar.textContent = surname;
+            flipDesc.textContent = story;
+            flipCard.classList.remove("flipped");
+            flipCard.style.display = "block";
+            actions.style.display = "block";
+        });
+
+        dlBtn.addEventListener("click", () => {
+            const surname = (input.value || "").trim().slice(0, 1) || "姓";
+            const a = document.createElement("a");
+            a.href = canvas.toDataURL("image/png");
+            a.download = `姓氏字源卡-${surname}.png`;
+            a.click();
+        });
+
+        // ========== 一个字的三千年：自动演变动画 ==========
+        const evoImgs = document.querySelectorAll("#evoStage img");
+        const evoLabel = document.getElementById("evoLabel");
+        const evoStages = ["商朝 · 甲骨文", "周朝 · 金文", "秦朝 · 小篆", "汉朝 · 隶书", "汉末 · 草书", "魏晋 · 楷书", "魏晋 · 行书"];
+        let evoIndex = 0;
+        setInterval(() => {
+            evoIndex = (evoIndex + 1) % evoStages.length;
+            evoImgs.forEach((im, i) => im.classList.toggle("evo-active", i === evoIndex));
+            evoLabel.textContent = evoStages[evoIndex];
+        }, 1600);
+
+        // ========== 勋章墙 ==========
+        const wall = document.getElementById("badgeWall");
+        const progress = document.getElementById("badgeProgress");
+        const congrats = document.getElementById("badgeCongrats");
+        if (typeof BADGE_DEFS !== "undefined" && typeof getBadges === "function") {
+            const owned = getBadges();
+            wall.innerHTML = "";
+            BADGE_DEFS.forEach(b => {
+                const has = owned.includes(b.id);
+                const slot = document.createElement("div");
+                slot.className = "badge-slot" + (has ? " owned" : "");
+                slot.innerHTML = `<span class="badge-icon">${b.icon}</span><span class="badge-name">${b.name}</span><span class="badge-desc">${b.desc}</span>`;
+                wall.appendChild(slot);
+            });
+            // 进度条 + 称号
+            const pct = Math.round(owned.length / BADGE_DEFS.length * 100);
+            document.getElementById("badgeFill").style.width = pct + "%";
+            const title = owned.length === 0 ? "小书童"
+                        : owned.length <= 2 ? "小学徒"
+                        : owned.length <= 4 ? "小学士"
+                        : "汉字小达人";
+            document.getElementById("badgeTitle").textContent = `称号：${title}（${owned.length}/${BADGE_DEFS.length}）`;
+            progress.textContent = `已收集 ${owned.length}/${BADGE_DEFS.length} 枚勋章——去「汉字的由来」「汉字成长史」「造字小秘密」「趣味汉字乐园」「活字印刷」「传承汉字文化」闯关集章吧！`;
+            if (owned.length === BADGE_DEFS.length) {
+                congrats.style.display = "block";
+                if (typeof showSeal === "function") showSeal("达人", congrats);
+            }
+        }
+    })();
+    </script>
+</body>
+</html>

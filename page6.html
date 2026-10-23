@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>趣味汉字乐园 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+	<style>
+		/* 导航栏固定顶部 - 核心必加 */
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+			height: 70px;
+			box-sizing: border-box;
+		}
+	
+		body.page-fun {
+			padding-top: 70px;
+			/* 内容下移，不被导航遮挡 */
+			min-height: 100vh;
+			margin: 0;
+			position: relative;
+		}
+	
+		/* 专门承载背景图的伪元素，让背景图透明 */
+		body.page-fun::before {
+			content: "";
+			position: fixed;
+			top: 70px;/* 背景图顶部=导航栏下方 */
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("./img/背景.jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.5;/* 背景透明度！！ */
+			z-index: -1;/* 背景图在最底层，文字在上面 */
+		}
+	
+		.container,
+		.footer {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.content-wrapper {
+		    background-color: rgba(255, 254, 245, 0.7); /* 保持透明度0.7 */
+		    border-radius: 12px;
+		    /* 核心调整：上内边距15px（减小标题到容器上边框距离），左右内边距40px（增大左右空隙），下内边距20px（不变） */
+		    padding: 15px 40px 20px; 
+		    margin: 5px auto 10px; /* 与导航栏距离5px，下距10px，左右居中 */
+		    max-width: calc(100% ); /* 配合左右40px内边距，确保页面边缘左右空隙一致 */
+		    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+		    position: relative;
+		    z-index: 2;
+		}
+	</style>
+</head>
+<body class="page-fun">
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <div class="container">
+		<div class="content-wrapper">
+        <h1 class="page-title">趣味汉字乐园</h1>
+        
+        <!-- 开篇引导 -->
+        <div class="text-box">
+            <p style="font-size: 25px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">汉字学习不枯燥，这里有好多好玩的汉字小游戏，快来闯关，玩转汉字吧！</p>
+        </div>
+
+        <!-- 趣味模块1：形近字辨析 -->
+        <h2 class="section-title">形近字辨析</h2>
+        <!-- 轮播图核心代码 - 直接嵌入已有网页的对应位置 -->
+        <div class="carousel">
+            <div class="carousel-imgs" id="carouselImgs">
+                <img src="img/page6趣味汉字乐园/形近字顺口溜/1.jpg" alt="形近字顺口溜1">
+                <img src="img/page6趣味汉字乐园/形近字顺口溜/2.jpg" alt="形近字顺口溜2">
+                <img src="img/page6趣味汉字乐园/形近字顺口溜/3.jpg" alt="形近字顺口溜3">
+            </div>
+            <button class="carousel-btn prev-btn" id="prevBtn">&lt;</button>
+            <button class="carousel-btn next-btn" id="nextBtn">&gt;</button>
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="switchImg(0)"></span>
+                <span class="indicator" onclick="switchImg(1)"></span>
+                <span class="indicator" onclick="switchImg(2)"></span>
+            </div>
+        </div>
+        
+        <script>
+        let currentIndex = 0;
+        const imgsContainer = document.querySelector('.carousel-imgs');
+        const imgCount = imgsContainer.children.length;
+        
+        function switchImg(index) {
+            imgsContainer.style.transform = `translateX(-${index * (100 / imgCount)}%)`;
+            document.querySelectorAll('.indicator').forEach((item, idx) => {
+                item.style.background = idx === index ? '#fff' : 'rgba(255,255,255,0.5)';
+            });
+            currentIndex = index;
+        }
+        
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + imgCount) % imgCount;
+            switchImg(currentIndex);
+        });
+        
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % imgCount;
+            switchImg(currentIndex);
+        });
+        
+        // 可选自动轮播，不需要可删除
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % imgCount;
+            switchImg(currentIndex);
+        }, 3000);
+        </script>
+        
+
+        <!-- 趣味模块2：汉字字谜屋（根治点击失效） -->
+        <h2 class="section-title">汉字字谜屋</h2>
+        <div class="interactive-box">
+            <!-- 刷新按钮 -->
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button class="theme-btn" id="refresh-quiz">刷新题目</button>
+            </div>
+            <!-- 字谜容器：强化点击区域，确保无遮挡 -->
+            <div class="quiz-item" id="riddle-container" style="cursor: pointer; padding: 15px; background-color: rgba(255, 200, 87, 0.1); border-radius: 8px; margin: 0;">
+                <p id="riddle-question" style="margin: 0; line-height: 1.8;">
+                    点击显示答案：一口咬掉牛尾巴（打一字）
+                </p>
+                <p id="riddle-answer" style="display: none; text-align: center; color: #ffd166; font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 0;">答案：告</p>
+            </div>
+            <div id="quiz-result" style="display: none;"></div>
+        </div>
+
+        <!-- 趣味模块3：谐音小趣事 -->
+        <h2 class="section-title">谐音小趣事</h2>
+        <!-- 谐音汉字猜谜游戏模块 -->
+        <div class="harmony-game-container" style="max-width: 700px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 0 15px rgba(255, 200, 87, 0.1);">
+            <h2 class="game-title" style="text-align: center; color: #ffb74d; font-size: 28px; margin-bottom: 20px; font-weight: bold; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">谐音汉字猜谜游戏</h2>
+            <div class="img-box" id="img-container" style="text-align: center; margin-bottom: 25px;">
+                <!-- 调整max-width为500px缩小图片，保留contain保证完整显示 -->
+                <img src="./img/page6趣味汉字乐园/谐音小游戏/陆游.png" alt="猜谜图片" style="width: 100%; max-width: 400px; object-fit: contain; border-radius: 8px; border: 2px solid #ffe082;">
+            </div>
+            <div class="input-box" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <input type="text" id="answer-input" placeholder="请输入谜底（汉字）" style="flex: 1; padding: 12px; border: 2px solid #ffd166; border-radius: 6px; font-size: 16px; outline: none; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+                <button id="submit-btn" style="padding: 12px 20px; background-color: #ffd166; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">提交答案</button>
+            </div>
+            <div class="tip-box" id="tip-text" style="height: 30px; text-align: center; font-size: 18px; margin-bottom: 15px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; color: #ff9800;"></div>
+            <button id="answer-btn" style="display: none; margin: 0 auto; padding: 8px 16px; background-color: #ff9800; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">查看答案</button>
+            <button id="refresh-btn" style="display: block; margin: 20px auto 0; padding: 10px 20px; background-color: #ffc857; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">刷新题目</button>
+        </div>
+        
+
+        <!-- 趣味模块：甲骨文寻宝长卷 -->
+        <style>
+        .hotspot circle.hs-ring { transform-box: fill-box; transform-origin: center; }
+        </style>
+        <h2 class="section-title">甲骨文寻宝长卷</h2>
+        <p class="treasure-hint">画卷里藏着 6 个甲骨文，左右滑动画卷寻找闪光的标记，点开认一认它们是哪个字！（寻宝进度：<span id="treasureCount">0</span>/6）</p>
+        <div class="treasure-scroll-wrap">
+            <svg class="treasure-scroll" viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#ffe9b8"/>
+                        <stop offset="1" stop-color="#fdf6e0"/>
+                    </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="1100" height="300" fill="url(#sky)"/>
+                <rect x="0" y="300" width="1100" height="120" fill="#e8d5a8"/>
+                <!-- 太阳 -->
+                <circle cx="950" cy="80" r="45" fill="#ffcf5c"/>
+                <g stroke="#ffcf5c" stroke-width="5" stroke-linecap="round">
+                    <line x1="950" y1="10" x2="950" y2="25"/><line x1="950" y1="135" x2="950" y2="150"/>
+                    <line x1="880" y1="80" x2="895" y2="80"/><line x1="1005" y1="80" x2="1020" y2="80"/>
+                    <line x1="900" y1="30" x2="910" y2="40"/><line x1="990" y1="120" x2="1000" y2="130"/>
+                    <line x1="1000" y1="30" x2="990" y2="40"/><line x1="910" y1="120" x2="900" y2="130"/>
+                </g>
+                <!-- 云 -->
+                <ellipse cx="180" cy="70" rx="55" ry="22" fill="#ffffff" opacity="0.85"/>
+                <ellipse cx="230" cy="85" rx="45" ry="18" fill="#ffffff" opacity="0.7"/>
+                <ellipse cx="700" cy="55" rx="50" ry="20" fill="#ffffff" opacity="0.8"/>
+                <!-- 山 -->
+                <polygon points="150,300 280,140 420,300" fill="#b7cf9a"/>
+                <polygon points="320,300 460,170 600,300" fill="#a3c08b"/>
+                <polygon points="255,165 280,140 305,165 292,160 280,170 268,160" fill="#ffffff" opacity="0.8"/>
+                <!-- 河流 -->
+                <path d="M560 420 Q600 360 580 300 L660 300 Q680 370 700 420 Z" fill="#9fd4e8"/>
+                <path d="M590 340 Q620 345 640 338" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.7"/>
+                <path d="M600 390 Q630 395 655 388" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.7"/>
+                <!-- 树 -->
+                <rect x="820" y="240" width="16" height="70" fill="#8a6b3d"/>
+                <circle cx="828" cy="215" r="42" fill="#86b56f"/>
+                <circle cx="862" cy="232" r="30" fill="#79a862"/>
+                <circle cx="800" cy="238" r="26" fill="#79a862"/>
+                <!-- 人 -->
+                <circle cx="470" cy="222" r="13" fill="#f2c9a0"/>
+                <polygon points="470,238 452,300 488,300" fill="#d98a5c"/>
+                <line x1="456" y1="255" x2="440" y2="278" stroke="#d98a5c" stroke-width="7" stroke-linecap="round"/>
+                <line x1="484" y1="255" x2="500" y2="278" stroke="#d98a5c" stroke-width="7" stroke-linecap="round"/>
+                <!-- 篝火 -->
+                <rect x="100" y="345" width="40" height="10" rx="5" fill="#8a6b3d" transform="rotate(-8 120 350)"/>
+                <rect x="100" y="345" width="40" height="10" rx="5" fill="#6f5335" transform="rotate(8 120 350)"/>
+                <path d="M120 345 Q100 320 118 295 Q122 310 130 300 Q145 322 122 345 Z" fill="#e8743b"/>
+                <path d="M121 340 Q110 325 120 310 Q128 322 123 340 Z" fill="#ffc857"/>
+                <!-- 草丛点缀 -->
+                <ellipse cx="350" cy="395" rx="30" ry="10" fill="#b7cf9a"/>
+                <ellipse cx="900" cy="390" rx="36" ry="12" fill="#b7cf9a"/>
+                <ellipse cx="60" cy="400" rx="26" ry="9" fill="#a3c08b"/>
+                <!-- 寻宝热点 -->
+                <g class="hotspot" data-key="日" transform="translate(950,80)"><circle class="hs-ring" r="30"/><text y="10">？</text></g>
+                <g class="hotspot" data-key="山" transform="translate(280,140)"><circle class="hs-ring" r="30"/><text y="10">？</text></g>
+                <g class="hotspot" data-key="水" transform="translate(630,355)"><circle class="hs-ring" r="30"/><text y="10">？</text></g>
+                <g class="hotspot" data-key="木" transform="translate(830,215)"><circle class="hs-ring" r="30"/><text y="10">？</text></g>
+                <g class="hotspot" data-key="火" transform="translate(120,320)"><circle class="hs-ring" r="30"/><text y="10">？</text></g>
+                <g class="hotspot" data-key="人" transform="translate(470,232)"><circle class="hs-ring" r="30"/><text y="10">？</text></g>
+            </svg>
+        </div>
+        <div class="treasure-panel" id="treasurePanel">
+            <p style="font-size: 20px; font-weight: bold; color: #a86932;">这个甲骨文是哪个字？</p>
+            <img id="treasureImg" src="" alt="甲骨文题目图">
+            <div class="treasure-options" id="treasureOptions"></div>
+            <p id="treasureMsg" style="min-height: 26px; margin-top: 10px; font-weight: bold;"></p>
+        </div>
+        <script>
+        (function () {
+            const huntData = {
+                "日": { img: "img/question-images/日甲骨文.jpg", options: ["日", "月", "目"] },
+                "山": { img: "img/question-images/山甲骨文.jpg", options: ["山", "石", "田"] },
+                "水": { img: "img/question-images/水甲骨文.jpg", options: ["水", "川", "雨"] },
+                "木": { img: "img/page3汉字成长史/木.jpg", options: ["木", "林", "禾"] },
+                "火": { img: "img/question-images/火甲骨文.jpg", options: ["火", "光", "炎"] },
+                "人": { img: "img/question-images/人甲骨文.jpg", options: ["人", "大", "天"] }
+            };
+            const panel = document.getElementById("treasurePanel");
+            const img = document.getElementById("treasureImg");
+            const optBox = document.getElementById("treasureOptions");
+            const tmsg = document.getElementById("treasureMsg");
+            const counter = document.getElementById("treasureCount");
+            let currentKey = null;
+            let foundCount = 0;
+
+            document.querySelectorAll(".hotspot").forEach(hs => {
+                hs.addEventListener("click", () => {
+                    if (hs.classList.contains("found")) {
+                        tmsg.textContent = "这个宝藏已经找到啦，去找下一个吧～";
+                        tmsg.style.color = "#a86932";
+                        return;
+                    }
+                    currentKey = hs.dataset.key;
+                    const data = huntData[currentKey];
+                    img.src = data.img;
+                    tmsg.textContent = "";
+                    optBox.innerHTML = "";
+                    data.options.forEach(opt => {
+                        const b = document.createElement("button");
+                        b.textContent = opt;
+                        b.addEventListener("click", () => answer(opt, hs));
+                        optBox.appendChild(b);
+                    });
+                    panel.classList.add("open");
+                    panel.scrollIntoView({ behavior: "smooth", block: "center" });
+                });
+            });
+
+            function answer(opt, hs) {
+                if (opt === currentKey) {
+                    hs.classList.add("found");
+                    hs.querySelector("text").textContent = "✓";
+                    foundCount++;
+                    counter.textContent = foundCount;
+                    tmsg.textContent = "答对啦！这个甲骨文就是「" + currentKey + "」！";
+                    tmsg.style.color = "#28a745";
+                    if (foundCount === 6) {
+                        tmsg.textContent = "6 个甲骨文全部找到，你就是寻宝小达人！";
+                        if (typeof showSeal === "function") showSeal("寻宝", panel);
+                    }
+                } else {
+                    tmsg.textContent = "再想想～看看它的形状像什么？";
+                    tmsg.style.color = "#c0392b";
+                }
+            }
+        })();
+        </script>
+
+        <!-- 趣味模块4：汉字拆分组合小游戏（替换原有“汉字变变变”） -->
+        <h2 class="section-title">汉字变变变</h2>
+        <p style="text-align: center; font-size: 16px; color: #a86932; margin: 0 0 10px;">小提示：这里是趣味拆字记忆法，帮你轻松记住字形；想了解更严谨的字源知识，可以去「造字小秘密」看看哦～</p>
+        <!-- 游戏容器：适配page-fun紫色主题 -->
+        <div class="game-container" style="width: 90%; max-width: 600px; margin: 0 auto; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(255, 200, 87, 0.1); padding: 30px; text-align: center;">
+            <div class="target-box" id="targetBox" style="width: 200px; height: 100px; border: 3px dashed #ffd166; margin: 20px auto; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #ff9800; border-radius: 8px; flex-wrap: wrap; gap: 10px;">拖入偏旁组合</div>
+            <div id="message" style="font-size: 20px; margin: 20px 0; height: 30px; color: #ffb74d;"></div>
+            <div class="parts-container" id="partsContainer"></div>
+            <div class="btn-group" style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+                <button id="confirm-btn" class="theme-btn" style="padding: 10px 20px; font-size: 16px; background-color: #ffc857; color: #fff; border: none; border-radius: 6px; cursor: pointer;">确认组合</button>
+                <button id="reset-btn" class="theme-btn" style="padding: 10px 20px; font-size: 16px; background-color: #ffb74d; color: #fff; border: none; border-radius: 6px; cursor: pointer;">清空组合</button>
+            </div>
+        </div>
+        
+        <!-- 汉字知识弹窗：适配page-fun主题色 -->
+        <div class="modal" id="knowledgeModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 100;">
+            <div class="modal-content" style="background-color: #fff; width: 70%; max-width: 400px; margin: 150px auto; padding: 25px; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 200, 87, 0.3);">
+                <h3 id="charTitle" style="color: #ffb74d; margin: 0;">汉字小知识：明</h3>
+                <p id="charDesc" style="margin: 15px 0 20px 0; font-size: 16px; line-height: 1.5; color: #333;">“明”由“日”和“月”组成，日和月都是发光的天体，因此“明”有明亮、清晰的意思。</p>
+                <button onclick="closeModal()" class="theme-btn" style="padding: 8px 15px; font-size: 16px; background-color: #ffc857; color: #fff; border: none; border-radius: 6px; cursor: pointer;">我知道了</button>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+    <!-- 底部版权 -->
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+        // 页面6字谜库（无格式问题，确保每道题结构一致）
+        const page6QuizBank = [
+            { question: "点击显示答案：一口咬掉牛尾巴（打一字）", answer: "告" },
+            { question: "点击显示答案：一人一张口，口下长只手（打一字）", answer: "拿" },
+            { question: "点击显示答案：山上还有山（打一字）", answer: "出" },
+            { question: "点击显示答案：格外大方（打一字）", answer: "回" },
+            { question: "点击显示答案：守门员（打一字）", answer: "闪" },
+            { question: "点击显示答案：半青半紫（打一字）", answer: "素" },
+            { question: "点击显示答案：十字对十字，太阳对月亮（打一字）", answer: "朝" },
+            { question: "点击显示答案：千言万语（打一字）", answer: "够" },
+            { question: "点击显示答案：一边红，一边绿，一边喜雨，一边喜风（打一字）", answer: "秋" },
+            { question: "点击显示答案：一口咬定（打一字）", answer: "交" },
+            { question: "点击显示答案：皇帝的衣服（打一字）", answer: "袭" },
+            { question: "点击显示答案：一点水准（打一字）", answer: "淮" },
+            { question: "点击显示答案：需要一半，留下一半（打一字）", answer: "雷" },
+            { question: "点击显示答案：半部春秋（打一字）", answer: "秦" },
+            { question: "点击显示答案：一月一日非今天（打一字）", answer: "明" }
+        ];
+
+        // 调用通用刷新函数（确保配置与元素ID完全一致）
+        initQuizRefresh(page6QuizBank, {
+            containerId: "riddle-container",
+            questionId: "riddle-question",
+            answerId: "riddle-answer",
+            resultId: "quiz-result"
+        });
+		// 汉字拆分组合游戏逻辑（集成到page6）
+			const charDatabase = {
+			    "明": { parts: ["日", "月"], desc: "由“日”和“月”组成，日与月皆为发光天体，因此“明”有明亮、清晰的含义，也引申为明白、知晓。" },
+			    "呆": { parts: ["口", "木"], desc: "“呆”由“口”和“木”组成，是“梅”的古字写法，后来借用来表示发愣、迟钝的意思。" },
+			    "杏": { parts: ["木", "口"], desc: "上面是“木”表示果树，下面的“口”像树上结的果子，指杏树或它酸甜的果实。" },
+			    "林": { parts: ["木", "木"], desc: "由两个“木”组成，表示成片生长的树木，本义就是树林，是甲骨文里就有的会意字。" },
+			    "休": { parts: ["人", "木"], desc: "像人靠在树木旁休息的样子，本义为歇息，后来也有停止、休假等含义。" },
+			    "从": { parts: ["人", "人"], desc: "两个“人”一前一后，像一个人跟从着另一个人，本义是跟随、随从。" },
+			    "炎": { parts: ["火", "火"], desc: "两个“火”叠加，形容火势旺盛，引申为热、炎热，也可指炎症。" },
+			    "森": { parts: ["木", "木", "木"], desc: "三个“木”相叠，比“林”的范围更广，指大片生长的树木，也就是茂密的森林。" },
+			    "品": { parts: ["口", "口", "口"], desc: "三个“口”组成，本义与众人言语有关，后引申为物品、等级、品质等意思。" },
+			    "众": { parts: ["人", "人", "人"], desc: "三人为“众”，三个“人”叠加表示数量多，指众人、大家，是古代表示复数的常用字。" },
+			    "灿": { parts: ["火", "山"], desc: "由“火”和“山”组成，是“燦”的简化字，形容光彩耀眼，常见词语有“灿烂”。" },
+			    "吕": { parts: ["口", "口"], desc: "两个“口”上下相叠，本义指人的脊骨一节一节相连的样子，后来借作音律名（“六吕”），现在多用作姓氏。" },
+			    "朋": { parts: ["月", "月"], desc: "“朋”的字形本是两串贝壳，古人以贝为货币，两串为一“朋”，后来借来表示“朋友”；字形与“月”相近，但并不是两个月亮哦。" },
+			    "昌": { parts: ["日", "日"], desc: "两个“日”上下叠加，象征着太阳高悬、光明兴盛，本义为兴旺、昌盛。" },
+			    "唱": { parts: ["口", "日", "日"], desc: "由“口”和“昌”组成，“口”表动作，“昌”表读音，本义指口中发出乐音，即歌唱。" },
+			    "仙": { parts: ["人", "山"], desc: "由“人”和“山”组成，《说文解字》解释为人在山上，古人认为隐居山中修炼的人能长生不老，称为“仙”。" },
+			    "焱": { parts: ["火", "火", "火"], desc: "三个“火”相叠，形容火焰升腾、光彩闪耀的样子，是“焰”的本字，多用于人名。" }
+			};
+		
+			// 反向字典：偏旁组合(排序后字符串) -> 对应汉字信息
+			const comboToChar = {};
+			Object.keys(charDatabase).forEach(char => {
+			    const info = charDatabase[char];
+			    const sortedCombo = [...info.parts].sort().join("");
+			    comboToChar[sortedCombo] = { char, desc: info.desc };
+			});
+		
+			let selectedParts = [];
+			const allBaseParts = ["日", "月", "口", "木", "人", "火", "山"];
+			const MAX_PART_COUNT = 3; // 偏旁最大拖入数量
+		
+			const targetBox = document.getElementById("targetBox");
+			const partsContainer = document.getElementById("partsContainer");
+			const message = document.getElementById("message");
+			const confirmBtn = document.getElementById("confirm-btn");
+			const resetBtn = document.getElementById("reset-btn");
+			const modal = document.getElementById("knowledgeModal");
+			const charTitle = document.getElementById("charTitle");
+			const charDesc = document.getElementById("charDesc");
+		
+			// 初始化偏旁按钮（核心修改：固定第一排3个，第二排4个）
+			function initParts() {
+			    partsContainer.innerHTML = "";
+			    // 给容器设置固定排版样式 强制实现3+4排列
+			    partsContainer.style.cssText = `
+			        width: 95%;
+			        margin: 30px auto;
+			        display: flex;
+			        flex-wrap: wrap;
+			        justify-content: center;
+			        gap: 15px;
+			    `;
+			    allBaseParts.forEach((part, index) => {
+			        const partElement = document.createElement("div");
+			        partElement.className = "part";
+			        partElement.textContent = part;
+			        partElement.draggable = true;
+			        partElement.dataset.part = part;
+			        // 适配page-fun主题的偏旁样式
+			        partElement.style.cssText = `
+			            width: 80px;
+			            height: 80px;
+			            background-color: rgba(255, 200, 87, 0.1);
+			            border-radius: 8px;
+			            display: flex;
+			            justify-content: center;
+			            align-items: center;
+			            font-size: 36px;
+			            cursor: grab;
+			            user-select: none;
+			            box-shadow: 0 2px 5px rgba(255, 200, 87, 0.1);
+			            color: #ffc857;
+			        `;
+			        // 核心：前3个是第一行，后4个是第二行，加换行处理
+			        if(index === 3){
+			            const br = document.createElement('div');
+			            br.style.width = '100%';
+			            partsContainer.appendChild(br);
+			        }
+			        partElement.addEventListener("dragstart", (e) => {
+			            e.dataTransfer.setData("text/plain", part);
+			        });
+			        partElement.addEventListener("mousedown", () => {
+			            partElement.style.cursor = "grabbing";
+			        });
+			        partElement.addEventListener("mouseup", () => {
+			            partElement.style.cursor = "grab";
+			        });
+			        partsContainer.appendChild(partElement);
+			    });
+			}
+		
+			// 检查当前组合是否匹配题库
+			function checkCombo() {
+			    if (selectedParts.length === 0) {
+			        message.textContent = "请先拖入偏旁再确认！";
+			        message.style.color = "#e74c3c";
+			        return;
+			    }
+			    const sortedSelected = [...selectedParts].sort().join("");
+			    if (comboToChar[sortedSelected]) {
+			        const { char, desc } = comboToChar[sortedSelected];
+			        message.textContent = `恭喜！组合成功：${char}`;
+			        message.style.color = "#27ae60";
+			        charTitle.textContent = `汉字小知识：${char}`;
+			        charDesc.textContent = desc;
+			        modal.style.display = "block";
+				    if (typeof awardBadge === "function") awardBadge("leyuan");
+			        confirmBtn.disabled = true;
+			        document.querySelectorAll(".part").forEach(el => {
+			            el.style.backgroundColor = "#ddd";
+			            el.style.cursor = "not-allowed";
+			            el.draggable = false;
+			        });
+			    } else {
+			        message.textContent = "组合失败，试试其他搭配吧！";
+			        message.style.color = "#e74c3c";
+			    }
+			}
+		
+			// 清空组合（核心修改：背景色保持初始化时的淡黄色）
+			function resetCombo() {
+			    selectedParts = [];
+			    targetBox.textContent = "拖入偏旁组合";
+			    message.textContent = "";
+			    confirmBtn.disabled = false;
+			    document.querySelectorAll(".part").forEach(el => {
+			        el.style.backgroundColor = "rgba(255, 200, 87, 0.1)"; // 与初始化样式一致的淡黄色
+			        el.style.cursor = "grab";
+			        el.draggable = true;
+			    });
+			}
+		
+			// 拖放事件
+			targetBox.addEventListener("dragover", (e) => {
+			    e.preventDefault();
+			    targetBox.style.borderColor = "#ffb74d";
+			});
+		
+			targetBox.addEventListener("dragleave", () => {
+			    targetBox.style.borderColor = "#ffc857";
+			});
+		
+			targetBox.addEventListener("drop", (e) => {
+			    e.preventDefault();
+			    targetBox.style.borderColor = "#ffc857";
+			    const part = e.dataTransfer.getData("text/plain");
+			    
+			    if (selectedParts.length >= MAX_PART_COUNT) {
+			        message.textContent = `最多只能拖入${MAX_PART_COUNT}个偏旁哦！`;
+			        message.style.color = "#e74c3c";
+			        return;
+			    }
+		
+			    selectedParts.push(part);
+			    targetBox.textContent = selectedParts.join(" ");
+			    message.textContent = "";
+			});
+		
+			// 事件绑定
+			confirmBtn.addEventListener("click", checkCombo);
+			resetBtn.addEventListener("click", resetCombo);
+			window.addEventListener("click", (e) => {
+			    if (e.target === modal) closeModal();
+			});
+		
+			function closeModal() {
+			    modal.style.display = "none";
+			    resetCombo();
+			}
+		
+			// 启动游戏
+			initParts();
+    </script>
+</body>
+</html>

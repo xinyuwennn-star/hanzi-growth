@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传承汉字文化 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+	<style>
+		/* 导航栏固定顶部 - 核心必加 */
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+			height: 70px;
+			box-sizing: border-box;
+		}
+	
+		body.page-heritage {
+			padding-top: 70px;
+			/* 内容下移，不被导航遮挡 */
+			min-height: 100vh;
+			margin: 0;
+			position: relative;
+		}
+	
+		/* 专门承载背景图的伪元素，让背景图透明 */
+		body.page-heritage::before {
+			content: "";
+			position: fixed;
+			top: 70px;/* 背景图顶部=导航栏下方 */
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("./img/背景.jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.5;/* 背景透明度！！ */
+			z-index: -1;/* 背景图在最底层，文字在上面 */
+		}
+	
+		.container,
+		.footer {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.content-wrapper {
+		    background-color: rgba(255, 254, 245, 0.7); /* 保持透明度0.7 */
+		    border-radius: 12px;
+		    /* 核心调整：上内边距15px（减小标题到容器上边框距离），左右内边距40px（增大左右空隙），下内边距20px（不变） */
+		    padding: 15px 40px 20px; 
+		    margin: 5px auto 10px; /* 与导航栏距离5px，下距10px，左右居中 */
+		    max-width: calc(100% ); /* 配合左右40px内边距，确保页面边缘左右空隙一致 */
+		    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+		    position: relative;
+		    z-index: 2;
+		}
+	</style>
+</head>
+<body class="page-heritage">
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <div class="container">
+		<div class="content-wrapper">
+        <h1 class="page-title">写好汉字 传承文化</h1>
+        
+        <!-- 开篇引导 -->
+        <div class="text-box">
+            <p style="font-size: 25px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">汉字不只是写字的符号，更是咱们老祖宗传下来的文化密码！今天咱们聊聊汉字有多重要，再说说怎么把汉字文化好好传下去吧！</p>
+        </div>
+
+        <!-- 汉字价值模块 -->
+        <h2 class="section-title">汉字的价值</h2>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+				是记录中华文明的“活化石”，从甲骨文到现在，几千年的故事都靠它传下来。</p>
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+				是中国人的“文化身份证”，不管在哪，看到汉字就像找到了根。</p>
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">
+				是厉害的“智慧工具箱”，一个字里藏着古人的观察和思考，比如“明”字里有日有月，一看就懂是“亮”的意思。</p>
+        </div>
+
+        <!-- 践行行动模块 -->
+        <h2 class="section-title">我们可以这样做</h2>
+        <div class="img-box">
+            <img src="./img/page8/行动.png" alt="践行行动插画">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">1：写好规范字<br>
+平时写字尽量写规范的楷书，少写“连笔乱字”，让汉字的美能好好展现。</p>
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">2：懂汉字故事<br>
+			多了解汉字的由来，比如“孝”字是“孩子背着老人”，知道这些故事，写字都更有感觉。</p>
+            <p style="font-size: 20px; text-indent: 2em; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif;">3：练基础书法<br>
+			试试写毛笔字的基本笔画，哪怕每天写10分钟，也能慢慢摸到汉字的“笔触感”。</p>
+        </div>
+
+        <!-- 留言互动区 -->
+        <div class="interactive-box message-box">
+            <h3 class="section-title">我的汉字心声</h3>
+            <input type="text" id="name" placeholder="你的名字">
+            <input type="text" id="favorite-char" placeholder="你最喜欢的汉字（限1个）">
+            <textarea id="reason" placeholder="喜欢的理由（不超过50字）"></textarea>
+            <button class="theme-btn" id="submit-btn">提交留言</button>
+            <ul class="message-list" id="message-list"></ul>
+        </div>
+
+        <!-- 书写技巧模块 -->
+        <h2 class="section-title">基础笔画书写小技巧</h2>
+        <div class="img-box">
+            <img src="img/page8/笔画.jpg" alt="笔画书写步骤图">
+        </div>
+    </div>
+	</div>
+
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+        submitMessage();
+    </script>
+</body>
+</html>

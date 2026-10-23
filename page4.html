@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>造字小秘密 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+	<style>
+		/* 导航栏固定顶部 - 核心必加 */
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+			height: 70px;
+			box-sizing: border-box;
+		}
+	
+		body.page-origin {
+			padding-top: 70px;
+			/* 内容下移，不被导航遮挡 */
+			min-height: 100vh;
+			margin: 0;
+			position: relative;
+		}
+	
+		/* 专门承载背景图的伪元素，让背景图透明 */
+		body.page-origin::before {
+			content: "";
+			position: fixed;
+			top: 70px;/* 背景图顶部=导航栏下方 */
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("./img/背景.jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.5;/* 背景透明度！！ */
+			z-index: -1;/* 背景图在最底层，文字在上面 */
+		}
+	
+		.container,
+		.footer {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.content-wrapper {
+		    background-color: rgba(255, 254, 245, 0.7); /* 保持透明度0.7 */
+		    border-radius: 12px;
+		    /* 核心调整：上内边距15px（减小标题到容器上边框距离），左右内边距40px（增大左右空隙），下内边距20px（不变） */
+		    padding: 15px 40px 20px; 
+		    margin: 5px auto 10px; /* 与导航栏距离5px，下距10px，左右居中 */
+		    max-width: calc(100% ); /* 配合左右40px内边距，确保页面边缘左右空隙一致 */
+		    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+		    position: relative;
+		    z-index: 2;
+		}
+
+	/* ===== 🏮 造字法闯关答题区 · 童趣配色升级 ===== */
+	.page-origin .interactive-box {
+	    background: linear-gradient(135deg, #fff9e6 0%, #ffe9a8 100%);
+	    border: 2px dashed #f0a830;
+	    border-radius: 20px;
+	    padding: 28px 30px 24px;
+	    box-shadow: 0 10px 28px rgba(240, 168, 48, 0.22);
+	}
+	.page-origin .interactive-box .section-title {
+	    font-size: 26px;
+	    text-align: center;
+	    border-left: none;
+	    padding-left: 0;
+	    color: #d97706;
+	    margin: 0 0 18px;
+	    text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
+	}
+	.page-origin #quiz-question {
+	    font-size: 20px;
+	    font-weight: bold;
+	    color: #5d3a1a;
+	    background: #fff;
+	    padding: 16px 20px;
+	    border-radius: 14px;
+	    border-left: 6px solid #f0a830;
+	    margin: 0 0 18px;
+	    line-height: 1.7;
+	    box-shadow: 0 3px 10px rgba(180, 120, 30, 0.1);
+	}
+	.page-origin .quiz-option {
+	    background: #fff;
+	    border: 2px solid #f3d27a;
+	    border-radius: 14px;
+	    padding: 14px 20px;
+	    font-size: 18px;
+	    font-weight: bold;
+	    color: #6b4423;
+	    margin: 12px 0;
+	    transition: all 0.22s ease;
+	    box-shadow: 0 2px 6px rgba(180, 120, 30, 0.08);
+	    cursor: pointer;
+	}
+	.page-origin .quiz-option:hover {
+	    background: #fff3cf;
+	    border-color: #f0a830;
+	    transform: translateX(8px);
+	    box-shadow: 0 5px 14px rgba(240, 168, 48, 0.28);
+	}
+	.page-origin .quiz-option.correct {
+	    background: linear-gradient(135deg, #d4f5dd, #9fe3b4);
+	    border-color: #28a745;
+	    color: #145a29;
+	    animation: popOk 0.4s ease;
+	}
+	.page-origin .quiz-option.wrong {
+	    background: linear-gradient(135deg, #ffe0e3, #ffb3bc);
+	    border-color: #dc3545;
+	    color: #7a1f2b;
+	    animation: shakeX 0.4s ease;
+	}
+	@keyframes popOk {
+	    0% { transform: scale(0.96); }
+	    50% { transform: scale(1.03); }
+	    100% { transform: scale(1); }
+	}
+	@keyframes shakeX {
+	    0%, 100% { transform: translateX(0); }
+	    25% { transform: translateX(-7px); }
+	    75% { transform: translateX(7px); }
+	}
+	.page-origin #quiz-result {
+	    font-size: 21px;
+	    margin-top: 16px;
+	    font-weight: bold;
+	}
+	</style>
+</head>
+<!-- 关键修复1：body类名同步改为page-origin -->
+<body class="page-origin">
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <div class="container">
+		<div class="content-wrapper">
+        <h1 class="page-title">汉字的造字小秘密</h1>
+        
+        <!-- 开篇引导 -->
+        <div class="text-box">
+            <p style="font-size: 25px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+				汉字造字有小技巧，掌握这些技巧，记汉字会更轻松，一起解锁造字小秘密！</p>
+        </div>
+
+        <!-- 造字法模块1：象形 -->
+        <h2 class="section-title">象形：画啥像啥</h2>
+        <div class="img-box">
+            <img src="img/造字法/横屏 象形.png" alt="象形字图解">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+				直接画事物的样子，比如：山（像山峰）、水（像流水）、鸟（像小鸟）。</p>
+        </div>
+
+        <!-- 造字法模块2：指事 -->
+        <h2 class="section-title">指事：简单笔画表意思</h2>
+        <div class="img-box">
+            <img src="img/造字法/横屏 指事.png" alt="指事字图解">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+				在象形字基础上加笔画，比如：上（一短横在长横上）、下（一短横在长横下）、刃（一点标在刀上）。</p>
+        </div>
+
+        <!-- 造字法模块3：会意 -->
+        <h2 class="section-title">会意：字合起来表意思</h2>
+        <div class="img-box">
+            <img src="img/造字法/横屏 会意.png" alt="会意字图解">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+				把几个字拼一起，比如：林（木+木=很多树）、众（人+人+人=很多人）、休（人靠在木上=休息）。</p>
+        </div>
+
+        <!-- 造字法模块4：形声 -->
+        <h2 class="section-title">形声：一半表音 一半表意</h2>
+        <div class="img-box">
+            <img src="img/造字法/横屏 形声.png" alt="形声字图解">
+        </div>
+        <div class="text-box">
+            <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+				一部分表意思，一部分表读音，比如：河（氵表意，可表音）、清（氵表意，青表音）。</p>
+        </div>
+
+<!-- 互动答题区（完整功能） -->
+        <div class="interactive-box">
+            <h3 class="section-title">小测试：造字法大闯关</h3>
+            <!-- 刷新按钮 -->
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button class="theme-btn" id="refresh-quiz">刷新题目</button>
+            </div>
+            <!-- 题目容器（确保选项完整渲染） -->
+            <div class="quiz-item" id="quiz-container">
+                <p id="quiz-question">★ “妈”字属于哪种造字法？</p>
+                <!-- 选项由JS动态渲染，此处留空不影响 -->
+            </div>
+            <div id="quiz-result"></div>
+        </div>
+
+        <p style="text-align: center; font-size: 14px; color: #a86932; margin-top: 30px;">资料来源：造字法（象形、指事、会意、形声）为“六书”内容，参考《说文解字·叙》及公开文字学资料整理。</p>
+    </div>
+	</div>
+
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+        // 页面4完整题目库（10道题，选项完整无缺失）
+ const page4QuizBank = [
+            {
+                question: "★ “妈”字属于哪种造字法？",
+                options: [
+                    {text: "A. 象形", ans: "no"},
+                    {text: "B. 指事", ans: "no"},
+                    {text: "C. 会意", ans: "no"},
+                    {text: "D. 形声", ans: "yes"}
+                ]
+            },
+            {
+                question: "★ “山”字通过画山峰形状创造，属于哪种造字法？",
+                options: [
+                    {text: "A. 象形", ans: "yes"},
+                    {text: "B. 形声", ans: "no"},
+                    {text: "C. 指事", ans: "no"},
+                    {text: "D. 会意", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “休”字由“人+木”组成（人靠树休息），属于哪种造字法？",
+                options: [
+                    {text: "A. 指事", ans: "no"},
+                    {text: "B. 会意", ans: "yes"},
+                    {text: "C. 形声", ans: "no"},
+                    {text: "D. 象形", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “上”字用短横标注长横上方，属于哪种造字法？",
+                options: [
+                    {text: "A. 指事", ans: "yes"},
+                    {text: "B. 会意", ans: "no"},
+                    {text: "C. 象形", ans: "no"},
+                    {text: "D. 形声", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “河”字中“氵”表意思，“可”表读音，属于哪种造字法？",
+                options: [
+                    {text: "A. 形声", ans: "yes"},
+                    {text: "B. 象形", ans: "no"},
+                    {text: "C. 指事", ans: "no"},
+                    {text: "D. 会意", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “众”字由“人+人+人”组成（很多人），属于哪种造字法？",
+                options: [
+                    {text: "A. 会意", ans: "yes"},
+                    {text: "B. 形声", ans: "no"},
+                    {text: "C. 指事", ans: "no"},
+                    {text: "D. 象形", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “刃”字在“刀”字上加一点标注刀刃，属于哪种造字法？",
+                options: [
+                    {text: "A. 指事", ans: "yes"},
+                    {text: "B. 会意", ans: "no"},
+                    {text: "C. 形声", ans: "no"},
+                    {text: "D. 象形", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “鸟”字通过画小鸟形状创造，属于哪种造字法？",
+                options: [
+                    {text: "A. 象形", ans: "yes"},
+                    {text: "B. 指事", ans: "no"},
+                    {text: "C. 会意", ans: "no"},
+                    {text: "D. 形声", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “清”字中“氵”表意思（和水有关），“青”表读音，属于哪种造字法？",
+                options: [
+                    {text: "A. 形声", ans: "yes"},
+                    {text: "B. 会意", ans: "no"},
+                    {text: "C. 指事", ans: "no"},
+                    {text: "D. 象形", ans: "no"}
+                ]
+            },
+            {
+                question: "★ “林”字由“木+木”组成（很多树），属于哪种造字法？",
+                options: [
+                    {text: "A. 会意", ans: "yes"},
+                    {text: "B. 形声", ans: "no"},
+                    {text: "C. 象形", ans: "no"},
+                    {text: "D. 指事", ans: "no"}
+                ]
+            }
+        ];
+
+        // 初始化刷新+答题功能（参数完全匹配）
+        initQuizRefresh(page4QuizBank, {
+            containerId: "quiz-container",
+            questionId: "quiz-question",
+            resultId: "quiz-result"
+        });
+    </script>
+</body>
+</html>

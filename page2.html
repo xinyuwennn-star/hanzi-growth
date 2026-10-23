@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉字的由来 - 汉字成长记</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffd166%22/><text x=%2250%22 y=%2270%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>汉</text></svg>">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/theme.css">
+<style>
+.nav {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 999;
+height: 70px;
+box-sizing: border-box;
+}
+
+body.page-origin {
+padding-top: 70px;
+min-height: 100vh;
+margin: 0;
+position: relative;
+}
+
+body.page-origin::before {
+content: "";
+position: fixed;
+top: 70px;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url("./img/背景.jpg");
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+opacity: 0.5;
+z-index: -1;
+}
+
+.container,
+.footer {
+position: relative;
+z-index: 1;
+width: 100%;
+box-sizing: border-box;
+padding: 0px 0; /* 新增：容器上下留间距 */
+}
+
+/* 关键修改：白色半透明容器（确保生效） */
+.content-wrapper {
+    background-color: rgba(255, 254, 245, 0.7); /* 保持透明度0.7 */
+    border-radius: 12px;
+    /* 核心调整：上内边距15px（减小标题到容器上边框距离），左右内边距40px（增大左右空隙），下内边距20px（不变） */
+    padding: 15px 40px 20px; 
+    margin: 5px auto 10px; /* 与导航栏距离5px，下距10px，左右居中 */
+    max-width: calc(100% ); /* 配合左右40px内边距，确保页面边缘左右空隙一致 */
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+</style>
+</head>
+<body class="page-origin">
+    <div class="nav">
+        <img src="img/汉字logo.png" alt="卡通汉字logo" class="logo">
+        <a href="./index.html">首页</a>
+        <a href="./page2.html">汉字的由来</a>
+        <a href="./page3.html">汉字成长史</a>
+        <a href="./page4.html">造字小秘密</a>
+        <a href="./page5.html">汉字里的文化</a>
+        <a href="./page6.html">趣味汉字乐园</a>
+        <a href="./page9.html">活字印刷</a>
+        <a href="./page7.html">汉字小名家</a>
+        <a href="./page8.html">传承汉字文化</a>
+    </div>
+
+    <div class="container">
+        <!-- 完整包裹所有内容 -->
+        <div class="content-wrapper">
+            <h1 class="page-title">汉字的由来</h1>
+            
+            <div class="text-box">
+                <p style="font-size: 25px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+同学们同学们，我们每天写的汉字，可不是一下子就有的，它是古人慢慢创造出来的，<br />一起看看最初的汉字长啥样吧！</p>
+            </div>
+
+            <h2 class="section-title">汉字雏形</h2>
+            <div class="img-box">
+                <img src="./img/page2汉字的由来/结绳记事.png" alt="结绳记事插画">
+            </div>
+            <div class="text-box">
+                <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+最早的时候，古人用结绳记事——大事打大结，小事打小结。后来觉得不够用，就开始画图记事，画太阳代表“日”，画流水代表“水”，这就是汉字最早的样子！</p>
+            </div>
+
+            <h2 class="section-title">仓颉造字</h2>
+            <div class="img-box">
+                <img src="./img/page2汉字的由来/仓颉造字.png" alt="仓颉造字插画">
+            </div>
+            <div class="text-box">
+                <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+民间传说，仓颉观察天上的星星、地上的鸟兽，创造出基础汉字。有了汉字，大家记事、交流就比之前方便多啦！</p>
+            </div>
+
+            <h2 class="section-title">成熟开端·甲骨文</h2>
+            <div class="img-box">
+                <img src="img/page2汉字的由来/拓印.png" alt="甲骨文拓片插画">
+            </div>
+            <div class="text-box">
+                <p style="font-size: 20px; text-align: center; font-family: 'Comic Sans MS', '幼圆', '微软雅黑 Light', sans-serif; font-weight: bold;">
+甲骨文是刻在龟甲、兽骨上的文字，是目前发现最早的成熟汉字。上面的“日”“月”“人”，像简笔画一样好认！</p>
+            </div>
+
+            <div class="interactive-box">
+                <h3 class="section-title">小测试：汉字起源大挑战</h3>
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <button class="theme-btn" id="refresh-quiz">刷新题目</button>
+                </div>
+                <div class="quiz-item" id="quiz-container">
+                    <p id="quiz-question">★ 这个甲骨文符号像“太阳”，代表哪个字？</p>
+                    <img id="quiz-img" src="img/question-images/水甲骨文.jpg" alt="题目图片" style="width: 50px; margin: 10px auto; display: block;">
+                </div>
+                <div id="quiz-result"></div>
+            </div>
+
+            <p style="text-align: center; font-size: 14px; color: #a86932; margin-top: 30px;">资料来源：汉字起源与甲骨文知识参考《说文解字》、汉典（zdic.net）及殷墟甲骨文公开考古资料整理。</p>
+        </div> <!-- 关闭.content-wrapper -->
+    </div>
+
+    <div class="footer">
+        <p>汉字成长记</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+        const page2QuizBank = [
+            {
+                question: "★ 这个甲骨文符号像“太阳”，代表哪个字？",
+                imgSrc: "img/question-images/日甲骨文.jpg",
+                options: [
+                    {text: "A. 月", ans: "no"},
+                    {text: "B. 日", ans: "yes"},
+                    {text: "C. 星", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 古人“结绳记事”是汉字发展的哪个阶段？",
+imgSrc: "img/question-images/结绳记事.png",
+                options: [
+                    {text: "A. 雏形阶段", ans: "yes"},
+                    {text: "B. 成熟阶段", ans: "no"},
+                    {text: "C. 简化阶段", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 传说中创造基础汉字的人物是谁？",
+imgSrc: "img/question-images/仓颉造字.png",
+                options: [
+                    {text: "A. 仓颉", ans: "yes"},
+                    {text: "B. 黄帝", ans: "no"},
+                    {text: "C. 孔子", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 甲骨文主要刻在什么载体上？",
+imgSrc: "img/question-images/甲骨文.png",
+                options: [
+                    {text: "A. 纸和笔", ans: "no"},
+                    {text: "B. 龟甲和兽骨", ans: "yes"},
+                    {text: "C. 石头和木头", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 这个甲骨文符号像“流水”，代表哪个字？",
+                imgSrc: "img/question-images/水甲骨文.jpg",
+                options: [
+                    {text: "A. 水", ans: "yes"},
+                    {text: "B. 火", ans: "no"},
+                    {text: "C. 雨", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 古人“画图记事”时，画“山峰”代表哪个字？",
+                imgSrc: "img/question-images/山甲骨文.jpg",
+                options: [
+                    {text: "A. 山", ans: "yes"},
+                    {text: "B. 石", ans: "no"},
+                    {text: "C. 田", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 甲骨文是目前发现的什么类型汉字？",
+imgSrc: "img/question-images/2甲骨文.png",
+                options: [
+                    {text: "A. 最早的成熟汉字", ans: "yes"},
+                    {text: "B. 最晚的简化汉字", ans: "no"},
+                    {text: "C. 最复杂的书法汉字", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 这个甲骨文符号像“站立的人”，代表哪个字？",
+                imgSrc: "img/question-images/人甲骨文.jpg",
+                options: [
+                    {text: "A. 人", ans: "yes"},
+                    {text: "B. 天", ans: "no"},
+                    {text: "C. 地", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 古人画图记事时，画“火焰”代表哪个字？",
+                imgSrc: "img/question-images/火甲骨文.jpg",
+                options: [
+                    {text: "A. 火", ans: "yes"},
+                    {text: "B. 光", ans: "no"},
+                    {text: "C. 热", ans: "no"}
+                ]
+            },
+            {
+                question: "★ 汉字雏形阶段除了结绳记事，还有什么方式？",
+imgSrc: "img/question-images/画图记事.png",
+                options: [
+                    {text: "A. 电脑打字", ans: "no"},
+                    {text: "B. 画图记事", ans: "yes"},
+                    {text: "C. 印刷术", ans: "no"}
+                ]
+            }
+        ];
+
+        initQuizRefresh(page2QuizBank, {
+            containerId: "quiz-container",
+            questionId: "quiz-question",
+            imgId: "quiz-img",
+            resultId: "quiz-result"
+        });
+    </script>
+</body>
+</html>
